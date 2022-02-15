@@ -9,7 +9,7 @@ const btnloader = document.querySelector("#btnloader");
 productCards.forEach((productCard) => {
   const productCardLink = productCard.querySelector(".product-card__link");
 
-  const childNamegot = productCard.querySelector(".childname").innerHTML;
+  const childNamegot = productCard.querySelector(".orderID").innerHTML;
 
   // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
   productCard.addEventListener("click", (e) => {

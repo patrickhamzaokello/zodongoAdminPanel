@@ -1,12 +1,12 @@
 <?php
-require("config.php");
+require("../config.php");
 $db = new Database();
 $con = $db->getConnString();
 
-require('session.php');
-require('queries/statsquery.php');
-require('queries/artist_verified_query.php');
-require "queries/classes/Order.php";
+require('../session.php');
+require('../queries/statsquery.php');
+require('../queries/artist_verified_query.php');
+require("../queries/classes/Order.php");
 
 
 ?>
@@ -18,30 +18,30 @@ require "queries/classes/Order.php";
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <title>Zodongo Foods</title>
+  <title>Banners</title>
 </head>
 
 <body>
   <header>
     <nav>
 
-      <div class="currentpage">
+    <div class="currentpage">
         <p>
-          <span><a href="index">Admin /</a></span>
-          <a href="index"><?= $login_session ?></a>
+          <span><a href="../index">Admin /</a></span>
+          <a href="../index"><?= $login_session ?></a>
         </p>
       </div>
 
       <div class="menu">
         <div class="menuitem">
-          <a href="index">Zodongo Foods Admin Panel</a>
+          <a href="../index">Zodongo Foods Admin Panel</a>
         </div>
       </div>
 
-      <a href="logout.php">
+      <a href="../logout.php">
         <div class="useraccount">Exit</div>
       </a></div>
     </nav>
@@ -52,76 +52,28 @@ require "queries/classes/Order.php";
         <div class="title">Zodongo Foods</div>
       </div>
       <div class="sidemenu">
-        <a href="index" class="menu active">
+        <a href="../index" class="menu">
           <p>Dashboard</p>
         </a>
-        <a href="pages/allorders" class="menu">
+        <a href="allorders" class="menu">
           <p>All Orders</p>
         </a>
-        <a href="pages/menuitems" class="menu">
+        <a href="menuitems" class="menu">
           <p>Menu</p>
         </a>
-        <a href="pages/categories" class="menu">
+        <a href="categories" class="menu">
           <p>Categories</p>
         </a>
-        <a href="pages/banners" class="menu">
+        <a href="banners" class="menu active">
           <p>Banners</p>
         </a>
       </div>
     </div>
     <div class="mainpanel">
-      <div class="sectionheading">
-        <h3 class="sectionlable">Statistics</h3>
-        <h6 class="sectionlable">All Major statistics</h6>
-      </div>
-      <div class="statistics">
-        <div class="card">
-          <div class="stats">
-            <p class="label">New Orders</p>
-            <p class="number"><?= $totalActiveOrders ?></p>
-          </div>
-          <div class="illustration">
-            <img src="images/asset1.svg" alt="" />
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="stats">
-            <p class="label">Menu</p>
-            <p class="number"><?= $totalMenuActive ?></p>
-          </div>
-          <div class="illustration">
-            <img src="images/asset1.svg" alt="" />
-          </div>
-        </div>
-        <div class="card">
-          <div class="stats">
-            <p class="label">Categories</p>
-            <p class="number"><?= $totalMenuType ?></p>
-          </div>
-          <div class="illustration">
-            <img src="images/asset1.svg" alt="" />
-          </div>
-        </div>
-        <div class="card">
-          <div class="stats">
-            <p class="label">Users</p>
-            <p class="number"><?= $total_customers ?></p>
-          </div>
-          <div class="illustration">
-            <img src="images/asset1.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="sectionheading">
-        <h3 class="sectionlable">New Orders</h3>
-        <h6 class="sectionlable">All New Orders</h6>
-      </div>
       <div class="elements">
 
         <div class="activities">
-
-
 
           <?php if ($verifiedArtistarray) : ?>
 
@@ -213,7 +165,7 @@ require "queries/classes/Order.php";
   </main>
 
 
-  <script src="js/processartist.js"></script>
+  <script src="../js/processartist.js"></script>
 
 
 

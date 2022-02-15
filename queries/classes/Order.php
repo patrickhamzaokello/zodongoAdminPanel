@@ -61,7 +61,7 @@ class Order
      */ 
     public function getOrder_address()
     {
-        return $this->order_address;
+        return explode("-",$this->order_address);
     }
 
     /**
@@ -128,6 +128,3 @@ class Order
        
     }
 }
-
-
-?>
