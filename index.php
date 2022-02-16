@@ -85,7 +85,7 @@ require "queries/classes/Order.php";
           </div>
           <div class="stats">
             <p class="label">New Orders</p>
-            <p class="number"><?= $totalActiveOrders ?></p>
+            <p class="number"><?= $totalActiveOrders_stat  ?></p>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ require "queries/classes/Order.php";
           </div>
           <div class="stats">
             <p class="label">Menu</p>
-            <p class="number"><?= $totalMenuActive ?></p>
+            <p class="number"><?= $totalMenuActivestat ?></p>
           </div>
       
         </div>
@@ -105,7 +105,7 @@ require "queries/classes/Order.php";
           </div>
           <div class="stats">
             <p class="label">Categories</p>
-            <p class="number"><?= $totalMenuType ?></p>
+            <p class="number"><?= $totalMenuType_stat ?></p>
           </div>
      
         </div>
@@ -115,7 +115,7 @@ require "queries/classes/Order.php";
           </div>
           <div class="stats">
             <p class="label">Users</p>
-            <p class="number"><?= $total_customers ?></p>
+            <p class="number"><?= $total_customers_stat ?></p>
           </div>
         
         </div>
@@ -129,13 +129,13 @@ require "queries/classes/Order.php";
 
         <div class="activities">
 
-          <?php if ($verifiedArtistarray) : ?>
+          <?php if ($orderNew) : ?>
 
             <div class="childrencontainer">
 
 
               <?php
-              foreach ($verifiedArtistarray as $row) :
+              foreach ($orderNew as $row) :
               ?>
 
                 <?php
@@ -159,7 +159,7 @@ require "queries/classes/Order.php";
                   <input type="hidden" name="artistid" value="<?= $order->getOrder_id() ?>">
 
                   <div class="product-card__actions">
-                    <a href="order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">View Details</a>
+                    <a href="pages/order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">View Details</a>
                   </div>
                 </div>
 

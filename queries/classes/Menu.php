@@ -7,7 +7,16 @@ class Menu
     private $con;
     private $menu_id;
     private $menu_name;
+    private $price;
+    private $description;
+    private $menu_type_id;
     private $menu_image;
+    private $backgroundImage;
+    private $ingredients;   
+    private $menu_status;   
+    private $created;   
+    private $modified;   
+    private $rating;
     private $TABLE_NAME = "tblmenu";
  
 
@@ -17,7 +26,7 @@ class Menu
         $this->con = $con;
         $this->menu_id = $id;
 
-        $query = mysqli_query($this->con, "SELECT `menu_id`, `menu_name`, `menu_image` FROM ". $this->TABLE_NAME ." WHERE menu_id ='$this->menu_id'");
+        $query = mysqli_query($this->con, "SELECT `menu_id`, `menu_name`, `price`, `description`, `menu_type_id`, `menu_image`, `backgroundImage`, `ingredients`, `menu_status`, `created`, `modified`, `rating` FROM ". $this->TABLE_NAME ." WHERE menu_id ='$this->menu_id'");
         $order_fetched = mysqli_fetch_array($query);
 
 
@@ -25,13 +34,31 @@ class Menu
 
             $this->menu_id = null;
             $this->menu_name = null;
+            $this->price = null;
+            $this->description = null;
+            $this->menu_type_id = null;
             $this->menu_image = null;
+            $this->backgroundImage = null;
+            $this->ingredients = null;
+            $this->menu_status = null;
+            $this->created = null;
+            $this->modified = null;
+            $this->rating = null;
         
         } else {
 
             $this->menu_id = $order_fetched['menu_id'];
             $this->menu_name = $order_fetched['menu_name'];
+            $this->price = $order_fetched['price'];
+            $this->description = $order_fetched['description'];
+            $this->menu_type_id = $order_fetched['menu_type_id'];
             $this->menu_image = $order_fetched['menu_image'];
+            $this->backgroundImage = $order_fetched['backgroundImage'];
+            $this->ingredients = $order_fetched['ingredients'];
+            $this->menu_status = $order_fetched['menu_status'];
+            $this->created = $order_fetched['created'];
+            $this->modified = $order_fetched['modified'];
+            $this->rating = $order_fetched['rating'];
      
         }
     }
@@ -61,5 +88,77 @@ class Menu
     public function getMenu_image()
     {
         return $this->menu_image;
+    }
+
+    /**
+     * Get the value of price
+     */ 
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Get the value of menu_type_id
+     */ 
+    public function getMenu_type_id()
+    {
+        return $this->menu_type_id;
+    }
+
+    /**
+     * Get the value of backgroundImage
+     */ 
+    public function getBackgroundImage()
+    {
+        return $this->backgroundImage;
+    }
+
+    /**
+     * Get the value of ingredients
+     */ 
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * Get the value of menu_status
+     */ 
+    public function getMenu_status()
+    {
+        return $this->menu_status;
+    }
+
+    /**
+     * Get the value of created
+     */ 
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Get the value of modified
+     */ 
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Get the value of rating
+     */ 
+    public function getRating()
+    {
+        return $this->rating;
     }
 }

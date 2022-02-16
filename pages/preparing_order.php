@@ -81,17 +81,17 @@ require("../queries/classes/Order.php");
 
 
         <a href="allorders.php">
-          <div class="filterorder ">New Orders <span class="noti circlenotactive">9</span></div>
+          <div class="filterorder ">New Orders <span class="noti circlenotactive"><?= $totalActiveOrders_stat?></span></div>
         </a>
 
 
         <a href="#">
-          <div class="filterorder filter_active">Preparing <span class="noti circle">5</span></div>
+          <div class="filterorder filter_active">Preparing <span class="noti circle"><?= $orderPreparingstat ?></span></div>
         </a>
 
 
         <a href="delivered_order.php">
-          <div class="filterorder">Delivered <span class="noti circlenotactive">4</span></div>
+          <div class="filterorder">Delivered <span class="noti circlenotactive"><?= $order_deliver_stat?></span></div>
         </a>
 
 
@@ -103,13 +103,13 @@ require("../queries/classes/Order.php");
 
         <div class="activities">
 
-          <?php if ($verifiedArtistarray) : ?>
+          <?php if ($orderPreparing) : ?>
 
             <div class="childrencontainer">
 
 
               <?php
-              foreach ($verifiedArtistarray as $row) :
+              foreach ($orderPreparing as $row) :
               ?>
 
                 <?php

@@ -1,10 +1,10 @@
 <?php
-$verifiedArtistarray = array();
+$orderNew = array();
 
-$artistQuery = mysqli_query($con, "SELECT order_id FROM tblorder WHERE  order_status = 1 ORDER BY `tblorder`.`order_date` DESC ");
+$order_new = mysqli_query($con, "SELECT order_id FROM tblorder WHERE  order_status = 1 ORDER BY `tblorder`.`order_date` DESC ");
 
-while ($row = mysqli_fetch_array($artistQuery)) {
+while ($row = mysqli_fetch_array($order_new)) {
 
-    array_push($verifiedArtistarray, $row['order_id']);
+    array_push($orderNew, $row['order_id']);
 
 }

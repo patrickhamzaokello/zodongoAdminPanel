@@ -19,8 +19,9 @@ $con = $db->getConnString();
 
 require('../session.php');
 require('../queries/statsquery.php');
-require('../queries/artist_verified_query.php');
-require("../queries/classes/Order.php");
+require('../queries/menuitems.php');
+require("../queries/classes/Menu.php");
+
 
 
 ?>
@@ -75,42 +76,29 @@ require("../queries/classes/Order.php");
 
         <div class="activities">
 
-          <?php if ($verifiedArtistarray) : ?>
+          <?php if ($menuItemsIds) : ?>
 
             <div class="childrencontainer">
 
 
               <?php
-              foreach ($verifiedArtistarray as $row) :
+              foreach ($menuItemsIds as $row) :
               ?>
 
                 <?php
-                $order = new Order($con, $row);
+                $menu = new Menu($con, $row);
                 ?>
 
-                <div class="product-card">
-                  <h4 class="orderID" style="display: none;"><?= $order->getOrder_id() ?></h4>
+                <div class="MenuItemCard">
 
-                  <p class="artistlable">Order No <span class="ordervalue"> ZD416F<?= $order->getOrder_id()  ?> </span></p>
-                  <p class="artistlable">Date Added <span class="ordervalue"><?= $order->getOrder_date()  ?> </span></p>
-                  <div class="addresslayout">
-                    <p class="artistlable">Address <span class="ordervalue"><?= $order->getOrder_address()[0]  ?> </span></p>
-                    <p class="artistlable">Contact <span class="ordervalue"><?= $order->getOrder_address()[1]  ?> </span></p>
-
-                  </div>
-                  <p class="artistlable">Tag <span class="ordervalue"><?= $order->getProcessed_by()  ?> </span> <span class="artistlable">Status <span class="ordervalue"><?= $order->getOrder_status()  ?></span> </span></p>
-                  <p class="artistlable">Total Amount (UGX) <span class="ordervalue"><?= number_format($order->getTotal_amount())  ?> </span></p>
-
-
-                  <input type="hidden" name="artistid" value="<?= $order->getOrder_id() ?>">
-
-
-                  <p class="linkss">
-                    <a href="#" class="product-card__link btn btn-primary my-2">Details</a>
-                  </p>
-                  <div class="product-card__actions">
-                    <a href="#" target="_blank" class="btn btn-primary my-2  sponsorbutton">Cancel</a>
-                  </div>
+                <img src="<?=$menu->getMenu_image()  ?>" alt="">
+                <h1><?=$menu->getMenu_name()  ?></h1>
+                <h1><?=$menu->getPrice()  ?></h1>
+                <h1><?=$menu->getDescription()  ?></h1>
+                <h1><?=$menu->getMenu_status()  ?></h1>
+                <h1><?=$menu->getMenu_id()  ?></h1>
+                <h1><?=$menu->getCreated()  ?></h1>
+                <h1><?=$menu->getModified()  ?></h1>
                 </div>
 
               <?php endforeach ?>
@@ -128,44 +116,11 @@ require("../queries/classes/Order.php");
 
       </div>
 
-      <div class="sponserdiv">
-        <div class="sponsorshipform">
-          <div class="sponsormessagediv">
-
-          </div>
-          <form action="processartist_db.php" method="POST">
-
-            <div class="form-group">
-              <input id="childnameinput" type="text" name="childname" class="form-control" placeholder="Child`s Name" disabled>
-            </div>
-            <div class="form-group">
-              <input type="text" id="name" name="name" class="form-control" placeholder="Sponsor`s Name" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="email" name="email" class="form-control" placeholder="Sponsor`s Email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="amount" name="amount" class="form-control" placeholder="Amount in $" required>
-            </div>
-
-            <div class="form-group">
-              <textarea name="sponsormessage" id="sponsormessage" cols="30" rows="5" class="form-control" placeholder="Message" spellcheck="false" required></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send" style="width: 100% !important;" class="sponsorchildnowbtn">
-            </div>
-            <div class="form-group">
-              <button type="reset" id="cancelbtn" style="background: #959595;border: none;padding: 10px 20px;width: 100%;color: white;" onclick="cancelsponsohip()">Cancel </button>
-            </div>
-          </form>
-
-        </div>
-      </div>
+      
     </div>
   </main>
 
 
-  <script src="../js/processartist.js"></script>
 
 
 

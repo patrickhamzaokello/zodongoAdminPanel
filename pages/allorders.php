@@ -21,6 +21,8 @@ $con = $db->getConnString();
 require('../session.php');
 require('../queries/statsquery.php');
 require('../queries/order_new_query.php');
+require('../queries/order_preparing_query.php');
+require('../queries/order_delivered_query.php');
 require("../queries/classes/Order.php");
 
 
@@ -83,17 +85,17 @@ require("../queries/classes/Order.php");
 
 
         <a href="#">
-          <div class="filterorder filter_active">New Orders <span class="noti circle">9</span></div>
+          <div class="filterorder filter_active">New Orders <span class="noti circle"><?= $totalActiveOrders_stat?></span></div>
         </a>
 
 
         <a href="preparing_order.php">
-          <div class="filterorder">Preparing <span class="noti circlenotactive">5</span></div>
+          <div class="filterorder">Preparing <span class="noti circlenotactive"><?= $orderPreparingstat ?></span></div>
         </a>
 
 
         <a href="delivered_order.php">
-          <div class="filterorder">Delivered <span class="noti circlenotactive">4</span></div>
+          <div class="filterorder">Delivered <span class="noti circlenotactive"><?= $order_deliver_stat?></span></div>
         </a>
 
 
@@ -105,13 +107,13 @@ require("../queries/classes/Order.php");
 
         <div class="activities">
 
-          <?php if ($verifiedArtistarray) : ?>
+          <?php if ($orderNew) : ?>
 
             <div class="childrencontainer">
 
 
               <?php
-              foreach ($verifiedArtistarray as $row) :
+              foreach ($orderNew as $row) :
               ?>
 
                 <?php
