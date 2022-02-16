@@ -139,9 +139,9 @@ header nav .menu .menuitem img {
 }
 
 header nav .useraccount {
-  background: #00c431;
+  background: #000000;
   padding: 6px 45px;
-  border: 1px solid #00c431;
+  border: 1px solid #000000;
   color: #fff;
 }
 
@@ -295,7 +295,7 @@ main .mainpanel .statistics .card {
 }
 
 main .mainpanel .statistics .card .stats {
-  margin-right: 1em;
+  margin-left: 1em;
   color: #181818;
 }
 
@@ -334,7 +334,7 @@ main .mainpanel .elements .activities .childrencontainer {
 }
 
 main .mainpanel .elements .activities .childrencontainer .product-card {
-  background: #f2f2f2;
+  background: #fff;
   padding: 1.5em;
   display: -ms-grid;
   display: grid;
@@ -351,7 +351,6 @@ main .mainpanel .elements .activities .childrencontainer .product-card .artistla
 
 main .mainpanel .elements .activities .childrencontainer .product-card .ordervalue {
   color: black;
-  font-weight: bold;
   margin: 0 0.3em;
 }
 
@@ -408,6 +407,22 @@ main .mainpanel .elements .activities .childrencontainer .product-card .sponsorb
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   border: 1px solid #e5e5e5 !important;
+  margin-top: 1.2em !important;
+  background: #000000 !important;
+  color: #fff !important;
+  border: 1px solid #000000 !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+main .mainpanel .elements .activities .childrencontainer .product-card .sponsorbutton:hover {
+  background: white !important;
+  color: black !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border: 1px solid #e5e5e5 !important;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 main .mainpanel .elements .activities .cartitemcontainer {
@@ -475,6 +490,20 @@ main .mainpanel .orderfilter .circle {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 40px;
+  margin-right: 5px;
+  text-align: center;
+  width: 40px;
+}
+
+main .mainpanel .orderfilter .circlenotactive {
+  background: #fafafa;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  color: #7c7c7c;
   display: inline-block;
   font-weight: bold;
   line-height: 40px;
@@ -637,6 +666,13 @@ main .active {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: white !important;
+}
+
+main .smalltag {
+  background: #86ffa0 !important;
+  padding: 0.1em 1em !important;
+  color: #000 !important;
+  font-size: 12px !important;
 }
 
 main .buttonload {

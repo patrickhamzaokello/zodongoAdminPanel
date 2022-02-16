@@ -1,19 +1,4 @@
-<?php
-require("../config.php");
-$db = new Database();
-$con = $db->getConnString();
 
-$orderid = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
-
-require('../session.php');
-require('../queries/statsquery.php');
-require('../queries/artist_verified_query.php');
-require("../queries/classes/Order.php");
-require("../queries/classes/OrderDetails.php");
-require("../queries/classes/Menu.php");
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +12,21 @@ require("../queries/classes/Menu.php");
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Order Detail</title>
 </head>
+<?php
+require("../config.php");
+$db = new Database();
+$con = $db->getConnString();
 
+$orderid = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
+
+require('../session.php');
+require('../queries/statsquery.php');
+require("../queries/classes/Order.php");
+require("../queries/classes/OrderDetails.php");
+require("../queries/classes/Menu.php");
+
+
+?>
 <body>
     <header>
         <nav>
@@ -41,7 +40,7 @@ require("../queries/classes/Menu.php");
 
             <div class="menu">
                 <div class="menuitem">
-                    <a href="../index">Zodongo Foods Admin Panel</a>
+                    <a href="../index">Order Details</a>
                 </div>
             </div>
 

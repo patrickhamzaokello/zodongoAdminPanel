@@ -129,9 +129,9 @@ header {
     }
 
     .useraccount {
-      background: #00c431;
+      background: #000000;
       padding: 6px 45px;
-      border: 1px solid #00c431;
+      border: 1px solid #000000;
       color: #fff;
     }
   }
@@ -256,7 +256,7 @@ main {
         box-shadow: 1px 4px 6px 0px #f1f1f1;
 
         .stats {
-          margin-right: 1em;
+          margin-left: 1em;
           color: rgb(24, 24, 24);
 
           .number {
@@ -276,6 +276,8 @@ main {
           }
         }
       }
+
+     
     }
 
     .elements {
@@ -292,7 +294,7 @@ main {
           // place-content: center;
 
           .product-card {
-            background: #f2f2f2;
+            background: #fff;
             padding: 1.5em;
             display: grid;
             margin-right: 2em;
@@ -307,7 +309,6 @@ main {
 
             .ordervalue {
               color: rgb(0, 0, 0);
-              font-weight: bold;
               margin: 0 0.3em;
             }
 
@@ -356,7 +357,22 @@ main {
               color: black !important;
               box-shadow: none !important;
               border: 1px solid #e5e5e5 !important;
+              margin-top: 1.2em !important;
+              background: #000000 !important;
+              color: #fff !important;
+              border: 1px solid #000000 !important;
+              transition: all .3s ease-in-out;
             }
+
+            .sponsorbutton:hover {
+              background: white !important;
+              color: black !important;
+              box-shadow: none !important;
+              border: 1px solid #e5e5e5 !important;
+              transition: all .3s ease-in-out;
+            }
+
+
           }
         }
 
@@ -411,6 +427,20 @@ main {
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
         color: #fff;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 40px;
+        margin-right: 5px;
+        text-align: center;
+        width: 40px;
+      }
+
+      .circlenotactive {
+        background: #fafafa;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        color: rgb(124, 124, 124);
         display: inline-block;
         font-weight: bold;
         line-height: 40px;
@@ -560,6 +590,13 @@ main {
     border-radius: 5px;
     box-sizing: border-box;
     color: rgb(255, 255, 255) !important;
+  }
+
+  .smalltag{
+    background: #86ffa0 !important;
+    padding: 0.1em 1em !important;
+    color: #000 !important;
+    font-size: 12px !important;
   }
 
   .buttonload {

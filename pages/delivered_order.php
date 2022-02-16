@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <title>Categories</title>
+  <title>Orders</title>
 </head>
 <?php
 require("../config.php");
@@ -19,7 +19,7 @@ $con = $db->getConnString();
 
 require('../session.php');
 require('../queries/statsquery.php');
-require('../queries/artist_verified_query.php');
+require('../queries/order_delivered_query.php');
 require("../queries/classes/Order.php");
 
 
@@ -28,7 +28,7 @@ require("../queries/classes/Order.php");
   <header>
     <nav>
 
-    <div class="currentpage">
+      <div class="currentpage">
         <p>
           <span><a href="../index">Admin /</a></span>
           <a href="../index"><?= $login_session ?></a>
@@ -37,13 +37,13 @@ require("../queries/classes/Order.php");
 
       <div class="menu">
         <div class="menuitem">
-          <a href="../index">Zodongo Foods Admin Panel</a>
+          <a href="../index">New Orders</a>
         </div>
       </div>
 
       <a href="../logout.php">
         <div class="useraccount">Exit</div>
-      </a></div>
+      </a>
     </nav>
   </header>
   <main>
@@ -55,13 +55,13 @@ require("../queries/classes/Order.php");
         <a href="../index" class="menu">
           <p>Dashboard</p>
         </a>
-        <a href="allorders" class="menu">
+        <a href="allorders" class="menu active">
           <p>All Orders</p>
         </a>
         <a href="menuitems" class="menu">
           <p>Menu</p>
         </a>
-        <a href="categories" class="menu active">
+        <a href="categories" class="menu">
           <p>Categories</p>
         </a>
         <a href="banners" class="menu">
@@ -70,6 +70,34 @@ require("../queries/classes/Order.php");
       </div>
     </div>
     <div class="mainpanel">
+
+      <div class="sectionheading">
+        <h3 class="sectionlable">Orders</h3>
+        <h6 class="sectionlable">Manage all orders here</h6>
+      </div>
+
+
+      <div class="orderfilter">
+
+
+        <a href="allorders.php">
+          <div class="filterorder ">New Orders <span class="noti circlenotactive">9</span></div>
+        </a>
+
+
+        <a href="preparing_order.php">
+          <div class="filterorder">Preparing <span class="noti circlenotactive">5</span></div>
+        </a>
+
+
+        <a href="#">
+          <div class="filterorder filter_active">Delivered <span class="noti circle">4</span></div>
+        </a>
+
+
+      </div>
+
+
 
       <div class="elements">
 
@@ -98,18 +126,14 @@ require("../queries/classes/Order.php");
                     <p class="artistlable">Contact <span class="ordervalue"><?= $order->getOrder_address()[1]  ?> </span></p>
 
                   </div>
-                  <p class="artistlable">Tag <span class="ordervalue"><?= $order->getProcessed_by()  ?> </span> <span class="artistlable">Status <span class="ordervalue"><?= $order->getOrder_status()  ?></span> </span></p>
+                  <p class="artistlable">Tag <span class="ordervalue"><?= $order->getProcessed_by()  ?> </span> <span class="artistlable">Status <span class="ordervalue smalltag"><?= $order->getOrder_status()  ?></span> </span></p>
                   <p class="artistlable">Total Amount (UGX) <span class="ordervalue"><?= number_format($order->getTotal_amount())  ?> </span></p>
 
 
                   <input type="hidden" name="artistid" value="<?= $order->getOrder_id() ?>">
 
-
-                  <p class="linkss">
-                    <a href="#" class="product-card__link btn btn-primary my-2">Details</a>
-                  </p>
                   <div class="product-card__actions">
-                    <a href="#" target="_blank" class="btn btn-primary my-2  sponsorbutton">Cancel</a>
+                    <a href="order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">View Details</a>
                   </div>
                 </div>
 
@@ -119,7 +143,7 @@ require("../queries/classes/Order.php");
 
 
           <?php else :  ?>
-            Working on Getting Featured Music Artists Curated for You
+            No Detail exists 
           <?php endif ?>
 
 
@@ -128,46 +152,9 @@ require("../queries/classes/Order.php");
 
       </div>
 
-      <div class="sponserdiv">
-        <div class="sponsorshipform">
-          <div class="sponsormessagediv">
-
-          </div>
-          <form action="processartist_db.php" method="POST">
-
-            <div class="form-group">
-              <input id="childnameinput" type="text" name="childname" class="form-control" placeholder="Child`s Name" disabled>
-            </div>
-            <div class="form-group">
-              <input type="text" id="name" name="name" class="form-control" placeholder="Sponsor`s Name" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="email" name="email" class="form-control" placeholder="Sponsor`s Email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="amount" name="amount" class="form-control" placeholder="Amount in $" required>
-            </div>
-
-            <div class="form-group">
-              <textarea name="sponsormessage" id="sponsormessage" cols="30" rows="5" class="form-control" placeholder="Message" spellcheck="false" required></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send" style="width: 100% !important;" class="sponsorchildnowbtn">
-            </div>
-            <div class="form-group">
-              <button type="reset" id="cancelbtn" style="background: #959595;border: none;padding: 10px 20px;width: 100%;color: white;" onclick="cancelsponsohip()">Cancel </button>
-            </div>
-          </form>
-
-        </div>
-      </div>
+      
     </div>
   </main>
-
-
-  <script src="../js/processartist.js"></script>
-
-
 
 </body>
 

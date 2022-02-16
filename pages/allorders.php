@@ -1,15 +1,4 @@
-<?php
-require("../config.php");
-$db = new Database();
-$con = $db->getConnString();
 
-require('../session.php');
-require('../queries/statsquery.php');
-require('../queries/artist_verified_query.php');
-require("../queries/classes/Order.php");
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +13,19 @@ require("../queries/classes/Order.php");
   <title>Orders</title>
 </head>
 
+<?php
+require("../config.php");
+$db = new Database();
+$con = $db->getConnString();
+
+require('../session.php');
+require('../queries/statsquery.php');
+require('../queries/order_new_query.php');
+require("../queries/classes/Order.php");
+
+
+?>
+
 <body>
   <header>
     <nav>
@@ -37,7 +39,7 @@ require("../queries/classes/Order.php");
 
       <div class="menu">
         <div class="menuitem">
-          <a href="../index">Zodongo Foods Admin Panel</a>
+          <a href="../index">New Orders</a>
         </div>
       </div>
 
@@ -85,13 +87,13 @@ require("../queries/classes/Order.php");
         </a>
 
 
-        <a href="#">
-          <div class="filterorder">Preparing <span class="noti circle">9</span></div>
+        <a href="preparing_order.php">
+          <div class="filterorder">Preparing <span class="noti circlenotactive">5</span></div>
         </a>
 
 
-        <a href="#">
-          <div class="filterorder">Delivered <span class="noti circle">9</span></div>
+        <a href="delivered_order.php">
+          <div class="filterorder">Delivered <span class="noti circlenotactive">4</span></div>
         </a>
 
 
@@ -126,18 +128,14 @@ require("../queries/classes/Order.php");
                     <p class="artistlable">Contact <span class="ordervalue"><?= $order->getOrder_address()[1]  ?> </span></p>
 
                   </div>
-                  <p class="artistlable">Tag <span class="ordervalue"><?= $order->getProcessed_by()  ?> </span> <span class="artistlable">Status <span class="ordervalue"><?= $order->getOrder_status()  ?></span> </span></p>
+                  <p class="artistlable">Tag <span class="ordervalue"><?= $order->getProcessed_by()  ?> </span> <span class="artistlable">Status <span class="ordervalue smalltag"><?= $order->getOrder_status()  ?></span> </span></p>
                   <p class="artistlable">Total Amount (UGX) <span class="ordervalue"><?= number_format($order->getTotal_amount())  ?> </span></p>
 
 
                   <input type="hidden" name="artistid" value="<?= $order->getOrder_id() ?>">
 
-
-                  <p class="linkss">
-                    <a href="#" class="product-card__link btn btn-primary my-2">Details</a>
-                  </p>
                   <div class="product-card__actions">
-                    <a href="order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">Cancel</a>
+                    <a href="order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">View Details</a>
                   </div>
                 </div>
 
@@ -156,48 +154,9 @@ require("../queries/classes/Order.php");
 
       </div>
 
-      <div class="sponserdiv">
-        <div class="sponsorshipform">
-          <div class="sponsormessagediv">
-
-          </div>
-
-
-          <form action="processartist_db.php" method="POST">
-
-            <div class="form-group">
-              <input id="childnameinput" type="text" name="childname" class="form-control" placeholder="Child`s Name" disabled>
-            </div>
-            <div class="form-group">
-              <input type="text" id="name" name="name" class="form-control" placeholder="Sponsor`s Name" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="email" name="email" class="form-control" placeholder="Sponsor`s Email" required>
-            </div>
-            <div class="form-group">
-              <input type="text" id="amount" name="amount" class="form-control" placeholder="Amount in $" required>
-            </div>
-
-            <div class="form-group">
-              <textarea name="sponsormessage" id="sponsormessage" cols="30" rows="5" class="form-control" placeholder="Message" spellcheck="false" required></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send" style="width: 100% !important;" class="sponsorchildnowbtn">
-            </div>
-            <div class="form-group">
-              <button type="reset" id="cancelbtn" style="background: #959595;border: none;padding: 10px 20px;width: 100%;color: white;" onclick="cancelsponsohip()">Cancel </button>
-            </div>
-          </form>
-
-        </div>
-      </div>
+      
     </div>
   </main>
-
-
-  <script src="../js/processartist.js"></script>
-
-
 
 </body>
 
