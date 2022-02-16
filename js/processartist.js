@@ -1,10 +1,9 @@
-
-
 const productCards = document.querySelectorAll(".product-card");
 const childinputname = document.querySelector("#childnameinput");
 const sponsorshipform = document.querySelector(".sponserdiv");
 const displaySetting = sponsorshipform.style.display;
 const btnloader = document.querySelector("#btnloader");
+var orderscriptID;
 
 productCards.forEach((productCard) => {
   const productCardLink = productCard.querySelector(".product-card__link");
@@ -22,15 +21,12 @@ productCards.forEach((productCard) => {
         sponsorshipform.style.display = "grid";
       }
 
-      console.log(childNamegot);
       childinputname.value = childNamegot;
     }
   });
 });
 
-
 $(document).ready(function () {
-
   $("form").submit(function (event) {
     var formData = {
       childname: $("#childnameinput").val(),
@@ -67,14 +63,12 @@ $(document).ready(function () {
   });
 });
 
-
-
 function cancelsponsohip() {
   sponsorshipform.style.display = "none";
 }
 
 function Water() {
-  btnloader.style.display = "inline-block"
+  btnloader.style.display = "inline-block";
   $.ajax({
     type: "POST",
     url: "updatedatabase.php",
@@ -88,7 +82,6 @@ function Water() {
       setTimeout(function () {
         btnloader.style.display = "none";
       }, 2000);
-
     }
   });
 }

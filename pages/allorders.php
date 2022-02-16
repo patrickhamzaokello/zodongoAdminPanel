@@ -28,7 +28,7 @@ require("../queries/classes/Order.php");
   <header>
     <nav>
 
-    <div class="currentpage">
+      <div class="currentpage">
         <p>
           <span><a href="../index">Admin /</a></span>
           <a href="../index"><?= $login_session ?></a>
@@ -43,7 +43,7 @@ require("../queries/classes/Order.php");
 
       <a href="../logout.php">
         <div class="useraccount">Exit</div>
-      </a></div>
+      </a>
     </nav>
   </header>
   <main>
@@ -70,6 +70,34 @@ require("../queries/classes/Order.php");
       </div>
     </div>
     <div class="mainpanel">
+
+      <div class="sectionheading">
+        <h3 class="sectionlable">Orders</h3>
+        <h6 class="sectionlable">Manage all orders here</h6>
+      </div>
+
+
+      <div class="orderfilter">
+
+
+        <a href="#">
+          <div class="filterorder filter_active">New Orders <span class="noti circle">9</span></div>
+        </a>
+
+
+        <a href="#">
+          <div class="filterorder">Preparing <span class="noti circle">9</span></div>
+        </a>
+
+
+        <a href="#">
+          <div class="filterorder">Delivered <span class="noti circle">9</span></div>
+        </a>
+
+
+      </div>
+
+
 
       <div class="elements">
 
@@ -109,7 +137,7 @@ require("../queries/classes/Order.php");
                     <a href="#" class="product-card__link btn btn-primary my-2">Details</a>
                   </p>
                   <div class="product-card__actions">
-                    <a href="#" target="_blank" class="btn btn-primary my-2  sponsorbutton">Cancel</a>
+                    <a href="order_detail.php?id=<?= $order->getOrder_id() ?>" class="btn btn-primary my-2  sponsorbutton">Cancel</a>
                   </div>
                 </div>
 
@@ -119,7 +147,7 @@ require("../queries/classes/Order.php");
 
 
           <?php else :  ?>
-            Working on Getting Featured Music Artists Curated for You
+            No Detail exists 
           <?php endif ?>
 
 
@@ -133,6 +161,8 @@ require("../queries/classes/Order.php");
           <div class="sponsormessagediv">
 
           </div>
+
+
           <form action="processartist_db.php" method="POST">
 
             <div class="form-group">

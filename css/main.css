@@ -227,7 +227,7 @@ main .mainpanel {
   height: 100vh;
   padding: 0 1em;
   padding-top: 5rem;
-  background: #fff;
+  background: #f8f7ff;
   overflow-y: auto;
 }
 
@@ -251,6 +251,25 @@ main .mainpanel .sectionheading h6 {
   border-bottom: 1px solid #bebebe;
 }
 
+main .mainpanel .small_sectionheading {
+  padding: 0 1em;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 2em;
+}
+
+main .mainpanel .small_sectionheading h3 {
+  font-size: 15px;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+main .mainpanel .small_sectionheading h6 {
+  color: #bebebe;
+  font-size: 12px;
+  padding-bottom: 1em;
+}
+
 main .mainpanel .statistics {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -262,7 +281,7 @@ main .mainpanel .statistics {
 
 main .mainpanel .statistics .card {
   padding: 2em 2.5em;
-  background: #000000;
+  background: #fff;
   margin: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -271,11 +290,13 @@ main .mainpanel .statistics .card {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 10px;
+  -webkit-box-shadow: 1px 4px 6px 0px #f1f1f1;
+          box-shadow: 1px 4px 6px 0px #f1f1f1;
 }
 
 main .mainpanel .statistics .card .stats {
   margin-right: 1em;
-  color: white;
+  color: #181818;
 }
 
 main .mainpanel .statistics .card .stats .number {
@@ -283,7 +304,7 @@ main .mainpanel .statistics .card .stats .number {
 }
 
 main .mainpanel .statistics .card .stats .label {
-  color: #e3dcff;
+  color: #3f3f3f;
   font-weight: bold;
 }
 
@@ -300,8 +321,7 @@ main .mainpanel .elements {
 
 main .mainpanel .elements .activities {
   width: 100%;
-  background: #fff;
-  margin-right: 1em;
+  background: #f8f7ff;
   padding: 1em;
 }
 
@@ -388,6 +408,173 @@ main .mainpanel .elements .activities .childrencontainer .product-card .sponsorb
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   border: 1px solid #e5e5e5 !important;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(320px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer .cartItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  -webkit-box-shadow: 1px 4px 6px 0px #f1f1f1;
+          box-shadow: 1px 4px 6px 0px #f1f1f1;
+  border-radius: 10px;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer .cartItem img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer .cartItem .cartItemdetail {
+  display: block;
+  text-transform: capitalize;
+  font-size: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer .cartItem .cartItemdetail .menutitle {
+  margin: 0 1em;
+}
+
+main .mainpanel .elements .activities .cartitemcontainer .cartItem .cartItemdetail .menutitle .cartlabel {
+  color: #bebebe;
+  margin-right: 0.5em;
+}
+
+main .mainpanel .orderfilter {
+  padding: 0 1em;
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .mainpanel .orderfilter .circle {
+  background: #c40024;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 40px;
+  margin-right: 5px;
+  text-align: center;
+  width: 40px;
+}
+
+main .mainpanel .orderfilter .noti {
+  margin-left: 10px;
+}
+
+main .mainpanel .orderfilter .filterorder {
+  background: #f2f2f2;
+  padding: 10px 25px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+main .mainpanel .orderfilter .filterorder:hover {
+  background: #ff0935 !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  color: #fff;
+}
+
+main .mainpanel .orderfilter .filter_active {
+  background: #ff0935 !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  color: #fff;
+}
+
+main .orderheading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 1em;
+  margin: 1em 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main .orderheading .ordertimediv {
+  border-left: 1px solid #bebebe;
+  margin-right: 1em;
+  padding: 0 1em;
+}
+
+main .orderheading .ordertimediv h6 {
+  color: #bebebe;
+  font-size: 14px;
+}
+
+main .cartdetailbutton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2em 1em;
+}
+
+main .cartdetailbutton button {
+  padding: 13px 27px;
+  outline: none;
+  border-radius: 5px;
+}
+
+main .cartdetailbutton .approvebutton {
+  background: #000;
+  color: white;
+  border: none;
+  margin-left: 1em;
+}
+
+main .cartdetailbutton .approvebutton:hover {
+  background: #00a92a !important;
+  color: #fff !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid #00a92a;
+}
+
+main .cartdetailbutton .cancelbutton {
+  background: #fff;
+  color: black;
+  border: 1px solid black;
+}
+
+main .cartdetailbutton .cancelbutton:hover {
+  background: #d60e00 !important;
+  color: white !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid #d60e00;
 }
 
 main .sponsorshipform {
