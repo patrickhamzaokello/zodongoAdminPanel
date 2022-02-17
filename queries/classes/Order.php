@@ -110,6 +110,10 @@ class Order
         return $orderstatus;
     }
 
+    public function getOrder_statusID() {
+        return $this->order_status;
+    }
+
     /**
      * Get the value of processed_by
      */ 

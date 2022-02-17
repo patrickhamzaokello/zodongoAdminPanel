@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +26,7 @@ require("../queries/classes/Menu.php");
 
 
 ?>
+
 <body>
     <header>
         <nav>
@@ -74,17 +74,20 @@ require("../queries/classes/Menu.php");
         </div>
         <div class="mainpanel">
 
-            <div class="sectionheading">
-                <h3 class="sectionlable">Order Details</h3>
-                <h6 class="sectionlable">Manage this Order</h6>
-            </div>
-
-            <?php
+        <?php
             $order = new Order($con, $orderid);
 
             ?>
 
 
+            <div class="sectionheading">
+                <h3 class="sectionlable">Order Details</h3>
+                <h6 class="sectionlable">Manage this Order</h6>
+
+                <h5>Order status: <?= $order->getOrder_status()  ?></h5>
+            </div>
+
+    
             <div class="orderheading">
 
                 <div class="ordertimediv">
@@ -101,7 +104,7 @@ require("../queries/classes/Menu.php");
                 </div>
                 <div class="ordertimediv">
                     <h6>Username</h6>
-                    <h5>Patrick Hamza</h5>
+                    <h5><?= $order->getCustomer_id() ?></h5>
                 </div>
                 <div class="ordertimediv">
                     <h6>Order No</h6>
@@ -116,6 +119,10 @@ require("../queries/classes/Menu.php");
 
 
             <div class="cartdetailbutton">
+            <input id="order_id_input" type="hidden" name="orderID" value="<?= $order->getOrder_id() ?>">
+            <input id="order_status_id" type="hidden" name="order_status_id" value="<?= $order->getOrder_statusID() ?>">
+
+
                 <button class="cancelbutton">Cancel Order</button>
                 <button class="approvebutton">Approve Order</button>
             </div>
@@ -176,17 +183,48 @@ require("../queries/classes/Menu.php");
                     </div>
 
                 <?php else :  ?>
-                    No Detail exists
+                    No Order Detail exists
                 <?php endif ?>
 
             </div>
+
+
+            <div class="sponserdiv">
+                <div class="sponsorshipform">
+                    <div class="sponsormessagediv">
+
+                    </div>
+                    <form id="approveform" action="" method="POST">
+
+                        <div class="form-group">
+                            <input id="childnameinput" type="hidden" name="childname" class="form-control" placeholder="order_id" disabled>
+                            <input id="order_status_id" type="hidden" name="order_status" class="form-control" placeholder="order_status" disabled>
+
+                        </div>
+
+                        <div class="approveorderform">
+                            <h1>Approve Order</h1>
+                            <p>All approved orders are accessed through the Order Page with tag "preparing" </p>
+                        </div>
+                      
+                        <div class="form-group">
+                            <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
+                        </div>
+                        <div class="form-group">
+                            <button type="reset" id="cancelbtn" style="background: #000;border: none;padding: 10px 20px;width: 100%;color: white; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
 
 
         </div>
     </main>
 
 
-    <script src="../js/processartist.js"></script>
+    <script src="../js/process_order_detail.js"></script>
 
 
 

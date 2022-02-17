@@ -147,7 +147,7 @@ require("../queries/classes/Order.php");
 
 
           <?php else :  ?>
-            No Detail exists 
+            No Orders Left
           <?php endif ?>
 
 

@@ -169,7 +169,7 @@ require "queries/classes/Order.php";
 
 
           <?php else :  ?>
-            No Detail exists 
+            No Orders Left
           <?php endif ?>
 
 
@@ -181,7 +181,6 @@ require "queries/classes/Order.php";
   </main>
 
 
-  <script src="js/processartist.js"></script>
 
 
 

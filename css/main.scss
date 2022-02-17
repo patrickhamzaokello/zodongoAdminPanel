@@ -220,6 +220,12 @@ main {
         padding-bottom: 1em;
         border-bottom: 1px solid #bebebe;
       }
+
+      h5 {
+        padding: 10px 15px;
+        background: yellow;
+        margin: 1em 0;
+      }
     }
 
     .small_sectionheading {
@@ -276,8 +282,6 @@ main {
           }
         }
       }
-
-     
     }
 
     .elements {
@@ -360,7 +364,7 @@ main {
               background: #000000 !important;
               color: #fff !important;
               border: 1px solid #000000 !important;
-              transition: all .3s ease-in-out;
+              transition: all 0.3s ease-in-out;
             }
 
             .sponsorbutton:hover {
@@ -368,10 +372,8 @@ main {
               color: black !important;
               box-shadow: none !important;
               border: 1px solid #e5e5e5 !important;
-              transition: all .3s ease-in-out;
+              transition: all 0.3s ease-in-out;
             }
-
-
           }
         }
 
@@ -391,16 +393,15 @@ main {
               object-fit: cover;
             }
 
-            .menuitemcarddetail{
+            .menuitemcarddetail {
               padding: 1em;
 
-
-              .menuitemactionbutton{
+              .menuitemactionbutton {
                 display: flex;
                 justify-content: right;
                 margin-bottom: 1em;
 
-                a{
+                a {
                   padding: 5px 18px;
                   background: #fff !important;
                   color: black;
@@ -410,27 +411,25 @@ main {
                   border-radius: 5px;
                 }
 
-                a:hover{
+                a:hover {
                   background: rgb(197, 15, 15) !important;
                   color: rgb(255, 255, 255);
                   border: 1px solid rgb(197, 15, 15) !important;
                 }
 
-                .menuitem-card__actions{
-
+                .menuitem-card__actions {
                   a {
                     background: #000000 !important;
-                  border: 1px solid #000 !important;
-                  color: white;
-                  margin-left: 1em;
+                    border: 1px solid #000 !important;
+                    color: white;
+                    margin-left: 1em;
                   }
 
-                  a:hover{
+                  a:hover {
                     background: rgb(45, 197, 15) !important;
                     color: rgb(255, 255, 255);
                     border: 1px solid rgb(45, 197, 15) !important;
                   }
-               
                 }
               }
 
@@ -438,14 +437,14 @@ main {
                 font-size: 17px;
               }
 
-              .description{
+              .description {
                 margin-bottom: 1em;
               }
               span {
                 color: #3f3f3f;
               }
 
-              .category{
+              .category {
                 margin-bottom: 1em;
               }
 
@@ -456,11 +455,7 @@ main {
                 color: #3f3f3f;
               }
             }
-
-
-
           }
-
         }
 
         .cartitemcontainer {
@@ -623,8 +618,8 @@ main {
 
   .sponsorshipform {
     background: #fff;
-    padding: 1em;
-    /* width: 300px; */
+    padding: 2em 1em;
+    border-radius: 10px;
   }
 
   .linkss a {
@@ -650,11 +645,29 @@ main {
   }
 
   .sponsorchildnowbtn {
-    background: #118b5f;
+    background: #00a307;
     border: none;
     padding: 10px 20px;
     width: 100%;
     color: white;
+    border-radius: 5px;
+  }
+
+  .approveorderform {
+    margin-bottom: 1em;
+    text-align: center;
+    width: 300px;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 15px;
+      color: rgb(138, 138, 138);
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+    }
   }
 
   .sponsorchildnowbtn:hover {
@@ -669,7 +682,7 @@ main {
   }
 
   .form-group {
-    margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
 
   .active {
@@ -679,7 +692,7 @@ main {
     color: rgb(255, 255, 255) !important;
   }
 
-  .smalltag{
+  .smalltag {
     background: #86ffa0 !important;
     padding: 0.1em 1em !important;
     color: #000 !important;
