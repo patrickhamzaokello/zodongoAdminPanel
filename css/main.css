@@ -733,7 +733,7 @@ main .sponserdiv {
 }
 
 main .sponsorchildnowbtn {
-  background: #00a307;
+  background: #000;
   border: none;
   padding: 10px 20px;
   width: 100%;
@@ -754,6 +754,23 @@ main .approveorderform h1 {
 main .approveorderform p {
   font-size: 15px;
   color: #8a8a8a;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+main .deleteorder {
+  margin-bottom: 1em;
+  text-align: center;
+  width: 300px;
+}
+
+main .deleteorder h1 {
+  font-size: 18px;
+}
+
+main .deleteorder p {
+  font-size: 15px;
+  color: #e40000;
   margin-top: 0.5em;
   margin-bottom: 1em;
 }

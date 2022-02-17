@@ -645,7 +645,7 @@ main {
   }
 
   .sponsorchildnowbtn {
-    background: #00a307;
+    background: #000;
     border: none;
     padding: 10px 20px;
     width: 100%;
@@ -665,6 +665,23 @@ main {
     p {
       font-size: 15px;
       color: rgb(138, 138, 138);
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .deleteorder {
+    margin-bottom: 1em;
+    text-align: center;
+    width: 300px;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 15px;
+      color: rgb(228, 0, 0);
       margin-top: 0.5em;
       margin-bottom: 1em;
     }
