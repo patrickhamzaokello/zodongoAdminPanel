@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,15 +20,18 @@ require('../session.php');
 require('../queries/statsquery.php');
 require('../queries/menuitems.php');
 require("../queries/classes/Menu.php");
+require("../queries/classes/MenuType.php");
+
 
 
 
 ?>
+
 <body>
   <header>
     <nav>
 
-    <div class="currentpage">
+      <div class="currentpage">
         <p>
           <span><a href="../index">Admin /</a></span>
           <a href="../index"><?= $login_session ?></a>
@@ -38,7 +40,7 @@ require("../queries/classes/Menu.php");
 
       <div class="menu">
         <div class="menuitem">
-          <a href="../index">Zodongo Foods Admin Panel</a>
+          <a href="../index">Menu Items</a>
         </div>
       </div>
 
@@ -78,7 +80,7 @@ require("../queries/classes/Menu.php");
 
           <?php if ($menuItemsIds) : ?>
 
-            <div class="childrencontainer">
+            <div class="menuitemscontatiner">
 
 
               <?php
@@ -91,14 +93,31 @@ require("../queries/classes/Menu.php");
 
                 <div class="MenuItemCard">
 
-                <img src="<?=$menu->getMenu_image()  ?>" alt="">
-                <h1><?=$menu->getMenu_name()  ?></h1>
-                <h1><?=$menu->getPrice()  ?></h1>
-                <h1><?=$menu->getDescription()  ?></h1>
-                <h1><?=$menu->getMenu_status()  ?></h1>
-                <h1><?=$menu->getMenu_id()  ?></h1>
-                <h1><?=$menu->getCreated()  ?></h1>
-                <h1><?=$menu->getModified()  ?></h1>
+                  <img src="<?= $menu->getMenu_image()  ?>" alt="">
+
+                  <div class="menuitemcarddetail">
+
+
+                    <div class="menuitemactionbutton">
+                      <p>
+                        <a href="#" class="product-card__link ">Delete</a>
+                      </p>
+                      <div class="menuitem-card__actions">
+                        <a href="#" target="_blank" class="">Update</a>
+                      </div>
+                    </div>
+
+                    <h1><?= $menu->getMenu_name()  ?></h1>
+                    <p class="description"><?= $menu->getDescription()  ?></p>
+                    <p><span>Price (Ugx) </span><?= $menu->getPrice()  ?></p>
+
+                    <p><span>Status </span><?= $menu->getMenu_status()  ?></0>
+                    <p class="category"><span>Category </span><?= $menu->getMenu_type_id()  ?></p>
+                    <p class="date"><span>Date Created </span><?= $menu->getCreated()  ?></p>
+                    <p class="date"><span>Last Update </span><?= $menu->getModified()  ?></p>
+
+                  </div>
+
                 </div>
 
               <?php endforeach ?>
@@ -116,7 +135,7 @@ require("../queries/classes/Menu.php");
 
       </div>
 
-      
+
     </div>
   </main>
 

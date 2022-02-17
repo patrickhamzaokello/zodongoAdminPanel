@@ -292,7 +292,6 @@ main {
           display: flex;
           flex-wrap: wrap;
           // place-content: center;
-
           .product-card {
             background: #fff;
             padding: 1.5em;
@@ -374,6 +373,94 @@ main {
 
 
           }
+        }
+
+        .menuitemscontatiner {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-gap: 1rem;
+          .MenuItemCard {
+            background: #fff;
+            display: grid;
+            font-size: 15px;
+            border-radius: 10px;
+
+            img {
+              width: 100%;
+              height: 140px;
+              object-fit: cover;
+            }
+
+            .menuitemcarddetail{
+              padding: 1em;
+
+
+              .menuitemactionbutton{
+                display: flex;
+                justify-content: right;
+                margin-bottom: 1em;
+
+                a{
+                  padding: 5px 18px;
+                  background: #fff !important;
+                  color: black;
+                  border: 1px solid #000 !important;
+                  -webkit-box-shadow: none !important;
+                  box-shadow: none !important;
+                  border-radius: 5px;
+                }
+
+                a:hover{
+                  background: rgb(197, 15, 15) !important;
+                  color: rgb(255, 255, 255);
+                  border: 1px solid rgb(197, 15, 15) !important;
+                }
+
+                .menuitem-card__actions{
+
+                  a {
+                    background: #000000 !important;
+                  border: 1px solid #000 !important;
+                  color: white;
+                  margin-left: 1em;
+                  }
+
+                  a:hover{
+                    background: rgb(45, 197, 15) !important;
+                    color: rgb(255, 255, 255);
+                    border: 1px solid rgb(45, 197, 15) !important;
+                  }
+               
+                }
+              }
+
+              h1 {
+                font-size: 17px;
+              }
+
+              .description{
+                margin-bottom: 1em;
+              }
+              span {
+                color: #3f3f3f;
+              }
+
+              .category{
+                margin-bottom: 1em;
+              }
+
+              .date {
+                display: inline-grid;
+                font-size: 12px;
+                margin-right: 1em;
+                color: #3f3f3f;
+              }
+            }
+
+
+
+          }
+
         }
 
         .cartitemcontainer {

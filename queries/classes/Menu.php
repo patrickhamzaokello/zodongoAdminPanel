@@ -95,7 +95,7 @@ class Menu
      */ 
     public function getPrice()
     {
-        return $this->price;
+        return number_format($this->price);
     }
 
     /**
@@ -111,7 +111,10 @@ class Menu
      */ 
     public function getMenu_type_id()
     {
-        return $this->menu_type_id;
+
+        $menutype = new MenuType($this->con,$this->menu_type_id);
+        return $menutype->getName();
+
     }
 
     /**
@@ -135,7 +138,13 @@ class Menu
      */ 
     public function getMenu_status()
     {
-        return $this->menu_status;
+
+        $status = "";
+        if($this->menu_status == 2)
+        {
+            $status = "visible";
+        }
+        return $status;
     }
 
     /**
@@ -143,7 +152,11 @@ class Menu
      */ 
     public function getCreated()
     {
-        return $this->created;
+        $phpdate = strtotime($this->created);
+        $mysqldate = date('d/n/y  h:i A', $phpdate);
+        // $mysqldate = date( 'd/M/Y H:i:s', $phpdate );
+
+        return $mysqldate;
     }
 
     /**
@@ -151,7 +164,11 @@ class Menu
      */ 
     public function getModified()
     {
-        return $this->modified;
+        $phpdate = strtotime($this->modified);
+        $mysqldate = date('d/n/y  h:i A', $phpdate);
+        // $mysqldate = date( 'd/M/Y H:i:s', $phpdate );
+
+        return $mysqldate;
     }
 
     /**

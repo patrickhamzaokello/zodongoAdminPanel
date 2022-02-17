@@ -91,7 +91,7 @@ require "queries/classes/Order.php";
 
         <div class="card">
         <div class="illustration">
-            <img src="images/fontisto_shopping-basket.svg" alt="" />
+            <img src="images/bxs_food-menu.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Menu</p>
@@ -101,7 +101,7 @@ require "queries/classes/Order.php";
         </div>
         <div class="card">
         <div class="illustration">
-            <img src="images/fontisto_shopping-basket.svg" alt="" />
+            <img src="images/bx_category.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Categories</p>
@@ -111,7 +111,7 @@ require "queries/classes/Order.php";
         </div>
         <div class="card">
         <div class="illustration">
-            <img src="images/fontisto_shopping-basket.svg" alt="" />
+            <img src="images/carbon_user-multiple.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Users</p>
