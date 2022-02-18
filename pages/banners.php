@@ -105,14 +105,6 @@ require("../queries/classes/MenuType.php");
 
 
                     <div class="menuitemactionbutton">
-                      <!-- 
-                      <p>
-                        <a href="#" class="product-card__link ">Delete</a>
-                      </p>
-                      <div class="menuitem-card__actions">
-                        <a href="#" target="_blank" class="">Update</a>
-                      </div> -->
-
                       <div class="cancebutton_parent">
                         <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getId() ?>">
                         <button class="cancelbutton">Delete</button>

@@ -71,6 +71,9 @@ require("../queries/classes/MenuType.php");
       </div>
     </div>
     <div class="mainpanel">
+      <div class="createnew">
+        <a class="createnewbtn">Add New Category</a>
+      </div>
 
       <div class="elements">
 
@@ -97,11 +100,14 @@ require("../queries/classes/MenuType.php");
 
 
                     <div class="menuitemactionbutton">
-                      <p>
-                        <a href="#" class="product-card__link ">Delete</a>
-                      </p>
-                      <div class="menuitem-card__actions">
-                        <a href="#" target="_blank" class="">Update</a>
+
+                      <div class="cancebutton_parent">
+                        <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getId() ?>">
+                        <button class="cancelbutton">Delete</button>
+                      </div>
+                      <div class="approvebutton_parent">
+                        <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getId() ?>">
+                        <button class="approvebutton">Update</button>
                       </div>
                     </div>
 
@@ -129,12 +135,67 @@ require("../queries/classes/MenuType.php");
         </div>
 
       </div>
+      <div class="sponserdiv">
+        <div class="sponsorshipform">
+          <div class="sponsormessagediv">
 
+          </div>
+          <form id="approveform" action="" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <input id="bannername" type="hidden" name="childname" class="form-control" placeholder="order_id" disabled>
+            </div>
+
+            <div class="approveorderform">
+              <h1>Category Details</h1>
+              <p>Provide New Category Details</p>
+
+              <div id="error"></div>
+
+
+              <div class="form-group">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Category Name">
+              </div>
+              
+              <div class="form-group">
+                <input type="text" id="number" name="display_order" class="form-control" placeholder="Category Description">
+              </div>
+              <div class="form-group">
+                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
+              </div>
+              <div class="form-group">
+                <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+              </div>
+            </div>
+
+            <div class="deleteorder" style="display: none;">
+              <h1>Delete Category</h1>
+              <p>This action can not be reversed when done! </p>
+
+
+              <div class="form-group">
+                <input type="submit" value="Delete" style="width: 100% !important;" class="sponsorchildnowbtn">
+              </div>
+              <div class="form-group">
+                <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
 
     </div>
   </main>
 
 
+  <script src="../js/process_categories.js"></script>
 
 
 
