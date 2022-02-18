@@ -53,7 +53,7 @@ require("../queries/classes/MenuType.php");
   <main>
     <div class="sidepanel">
       <div class="about">
-      <div class="title">
+        <div class="title">
           <img src="assets/zodongologo.png" alt="">
         </div>
       </div>
@@ -74,6 +74,8 @@ require("../queries/classes/MenuType.php");
           <p>Banners</p>
         </a>
       </div>
+    
+    </div>
     </div>
     <div class="mainpanel">
 
@@ -165,29 +167,29 @@ require("../queries/classes/MenuType.php");
                 <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name">
               </div>
               <div class="form-group">
-              <?php if ($menuTypesIds_withfood) : ?>
-                <select id="category" name="Category" class="form-control">
-
-                  <?php
-                  foreach ($menuTypesIds_withfood as $row) :
-                  ?>
+                <?php if ($menuTypesIds_withfood) : ?>
+                  <select id="category" name="Category" class="form-control">
 
                     <?php
-                    $menu_type = new MenuType($con, $row);
+                    foreach ($menuTypesIds_withfood as $row) :
                     ?>
 
-                    <option value="  <?= $menu_type->getId()  ?>">
-                      <?= $menu_type->getName()  ?>
+                      <?php
+                      $menu_type = new MenuType($con, $row);
+                      ?>
+
+                      <option value="  <?= $menu_type->getId()  ?>">
+                        <?= $menu_type->getName()  ?>
+                      </option>
+                    <?php endforeach ?>
+                  </select>
+                <?php else :  ?>
+                  <select name="Category" class="form-control">
+                    <option value="0">
+                      No categories found
                     </option>
-                  <?php endforeach ?>
-                </select>
-              <?php else :  ?>
-                <select name="Category" class="form-control">
-                  <option value="0">
-                  No categories found
-                  </option>
-                </select>
-              <?php endif ?>
+                  </select>
+                <?php endif ?>
               </div>
               <div class="form-group">
                 <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order">

@@ -86,7 +86,7 @@ if (isset($_POST['order_action'])) {
 
 
         if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
-          $query = mysqli_query($con,"UPDATE `tblbanner` SET `name`='$name',`imageUrl`='$db_targetPath', `category_id`, = '', `display_order`=$banner_number,`datemodified`='$date' WHERE  `id` = $banner_id ");
+          $query = mysqli_query($con,"UPDATE `tblbanner` SET `name`='$name',`imageUrl`='$db_targetPath', `category_id` = $category_id, `display_order` = $banner_number,`datemodified`='$date' WHERE  `id` = $banner_id ");
 
           $data['success'] = true;
           $data['message'] = 'Banner Updated!';

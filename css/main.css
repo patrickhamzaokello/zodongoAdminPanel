@@ -205,6 +205,10 @@ main .sidepanel .sidemenu .menu {
   color: #fff;
   padding: 10px 20px;
   margin: 0.5em 0;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 main .sidepanel .sidemenu .menu img {
@@ -212,12 +216,13 @@ main .sidepanel .sidemenu .menu img {
   width: 18px;
 }
 
+main .sidepanel .sidemenu .active {
+  border: 1px solid #0eb62a !important;
+}
+
 main .sidepanel .sidemenu .menu:hover {
-  border: 1px solid #0eb62a;
-  border-radius: 5px;
+  border: 1px solid #0eb62a !important;
   color: white !important;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 main .mainpanel {
@@ -444,8 +449,8 @@ main .mainpanel .elements .activities .childrencontainer .product-card .sponsorb
 main .mainpanel .elements .activities .menuitemscontatiner {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(320px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  -ms-grid-columns: (minmax(320px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
 
@@ -534,8 +539,8 @@ main .mainpanel .elements .activities .menuitemscontatiner .MenuItemCard .menuit
 main .mainpanel .elements .activities .cartitemcontainer {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(320px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  -ms-grid-columns: (minmax(320px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 1rem;
 }
 

@@ -178,6 +178,10 @@ main {
         color: #fff;
         padding: 10px 20px;
         margin: 0.5em 0;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        box-sizing: border-box;
+
 
         img {
           margin-right: 0.5em;
@@ -185,11 +189,13 @@ main {
         }
       }
 
+      .active {
+        border: 1px solid #0eb62a !important;
+      }
+
       .menu:hover {
-        border: 1px solid #0eb62a;
-        border-radius: 5px;
+        border: 1px solid #0eb62a !important;
         color: rgb(255, 255, 255) !important;
-        box-sizing: border-box;
       }
     }
   }
@@ -391,7 +397,7 @@ main {
 
         .menuitemscontatiner {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
           grid-gap: 1rem;
           .MenuItemCard {
             background: #fff;
@@ -472,7 +478,7 @@ main {
 
         .cartitemcontainer {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
           grid-gap: 1rem;
           .cartItem {
             display: flex;

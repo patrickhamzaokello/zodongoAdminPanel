@@ -10,5 +10,9 @@ if (!isset($_SESSION['login_user'])) {
 
     $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 
-    $login_session = $row['customer_username'];
+    if ($row) {
+        $login_session = $row['customer_username'];
+    } else {
+        $login_session = "Null User";
+    }
 }

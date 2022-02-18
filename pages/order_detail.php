@@ -79,157 +79,162 @@ require("../queries/classes/Menu.php");
             <?php
             $order = new Order($con, $orderid);
 
+            if ($order->getOrder_id() != null) :
             ?>
 
 
-            <div class="sectionheading">
-                <h3 class="sectionlable">Order Details</h3>
-                <h6 class="sectionlable">Manage this Order</h6>
+                <div class="sectionheading">
+                    <h3 class="sectionlable">Order Details</h3>
+                    <h6 class="sectionlable">Manage this Order</h6>
 
-                <h5>Order status: <?= $order->getOrder_status()  ?></h5>
-            </div>
-
-
-            <div class="orderheading">
-
-                <div class="ordertimediv">
-                    <h6>Order time</h6>
-                    <h5><?= $order->getOrder_date()  ?></h5>
-                </div>
-                <div class="ordertimediv">
-                    <h6>Address</h6>
-                    <h5><?= $order->getOrder_address()[0] ?></h5>
-                </div>
-                <div class="ordertimediv">
-                    <h6>Contact</h6>
-                    <h5><?= $order->getOrder_address()[1]  ?></h5>
-                </div>
-                <div class="ordertimediv">
-                    <h6>Username</h6>
-                    <h5><?= $order->getCustomer_id() ?></h5>
-                </div>
-                <div class="ordertimediv">
-                    <h6>Order No</h6>
-                    <h5> ZD416F<?= $order->getOrder_id() ?></h5>
-                </div>
-                <div class="ordertimediv">
-                    <h6>Total Amount (UGX)</h6>
-                    <h5><?= number_format($order->getTotal_amount())  ?></h5>
+                    <h5>Order status: <?= $order->getOrder_status()  ?></h5>
                 </div>
 
-            </div>
 
+                <div class="orderheading">
 
-            <div class="cartdetailbutton">
-                <div class="cancebutton_parent">
-                    <input class="order_id_input" type="hidden" name="orderID" value="<?= $order->getOrder_id() ?>">
-                    <input class="order_status_id" type="hidden" name="order_status_id" value="<?= $order->getOrder_statusID() ?>">
-                    <button class="cancelbutton">Delete Order</button>
+                    <div class="ordertimediv">
+                        <h6>Order time</h6>
+                        <h5><?= $order->getOrder_date()  ?></h5>
+                    </div>
+                    <div class="ordertimediv">
+                        <h6>Address</h6>
+                        <h5><?= $order->getOrder_address()[0] ?></h5>
+                    </div>
+                    <div class="ordertimediv">
+                        <h6>Contact</h6>
+                        <h5><?= $order->getOrder_address()[1]  ?></h5>
+                    </div>
+                    <div class="ordertimediv">
+                        <h6>Username</h6>
+                        <h5><?= $order->getCustomer_id() ?></h5>
+                    </div>
+                    <div class="ordertimediv">
+                        <h6>Order No</h6>
+                        <h5> ZD416F<?= $order->getOrder_id() ?></h5>
+                    </div>
+                    <div class="ordertimediv">
+                        <h6>Total Amount (UGX)</h6>
+                        <h5><?= number_format($order->getTotal_amount())  ?></h5>
+                    </div>
+
                 </div>
-                <div class="approvebutton_parent">
-                    <input class="order_id_input" type="hidden" name="orderID" value="<?= $order->getOrder_id() ?>">
-                    <input class="order_status_id" type="hidden" name="order_status_id" value="<?= $order->getOrder_statusID() ?>">
-                    <button class="approvebutton">Approve Order</button>
+
+
+                <div class="cartdetailbutton">
+                    <div class="cancebutton_parent">
+                        <input class="order_id_input" type="hidden" name="orderID" value="<?= $order->getOrder_id() ?>">
+                        <input class="order_status_id" type="hidden" name="order_status_id" value="<?= $order->getOrder_statusID() ?>">
+                        <button class="cancelbutton">Delete Order</button>
+                    </div>
+                    <div class="approvebutton_parent">
+                        <input class="order_id_input" type="hidden" name="orderID" value="<?= $order->getOrder_id() ?>">
+                        <input class="order_status_id" type="hidden" name="order_status_id" value="<?= $order->getOrder_statusID() ?>">
+                        <button class="approvebutton">Approve Order</button>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="small_sectionheading">
-                <h3 class="smallsectionlable">Cart Items</h3>
-                <h6 class="smallsectionlable">All Cart Items in this Order</h6>
-            </div>
+                <div class="small_sectionheading">
+                    <h3 class="smallsectionlable">Cart Items</h3>
+                    <h6 class="smallsectionlable">All Cart Items in this Order</h6>
+                </div>
 
 
-            <div class="elements">
-                <?php
+                <div class="elements">
+                    <?php
 
-                $tblorderdetails = array();
+                    $tblorderdetails = array();
 
-                $orderdetailitem = mysqli_query($con, "SELECT order_details_id FROM tblorderdetails WHERE  order_id = " . $orderid . "");
+                    $orderdetailitem = mysqli_query($con, "SELECT order_details_id FROM tblorderdetails WHERE  order_id = " . $orderid . "");
 
-                while ($row = mysqli_fetch_array($orderdetailitem)) {
-                    array_push($tblorderdetails, $row['order_details_id']);
-                }
-
-
-                if ($tblorderdetails) :
-
-                ?>
-
-                    <div class="activities">
-
-                        <div class="cartitemcontainer">
+                    while ($row = mysqli_fetch_array($orderdetailitem)) {
+                        array_push($tblorderdetails, $row['order_details_id']);
+                    }
 
 
-                            <?php
-                            foreach ($tblorderdetails as $row) :
-                            ?>
+                    if ($tblorderdetails) :
+
+                    ?>
+
+                        <div class="activities">
+
+                            <div class="cartitemcontainer">
+
 
                                 <?php
-                                $cartItem = new OrderDetails($con, $row);
+                                foreach ($tblorderdetails as $row) :
                                 ?>
 
-                                <div class="cartItem">
-                                    <img src="<?= $cartItem->getMenuImage()  ?>" alt="">
+                                    <?php
+                                    $cartItem = new OrderDetails($con, $row);
+                                    ?>
 
-                                    <div class="cartItemdetail">
-                                        <div class="menutitle"><?= $cartItem->getMenuName()  ?></div>
-                                        <div class="menutitle"><span class="cartlabel">Qty</span>X <?= $cartItem->getNo_of_serving()  ?></div>
-                                        <div class="menutitle"><span class="cartlabel">Unit Price (Ugx)</span><?= $cartItem->getAmount()  ?> </div>
-                                        <div class="menutitle"><span class="cartlabel">Total (Ugx) </span><?= $cartItem->getTotal_amount()  ?> </div>
+                                    <div class="cartItem">
+                                        <img src="<?= $cartItem->getMenuImage()  ?>" alt="">
+
+                                        <div class="cartItemdetail">
+                                            <div class="menutitle"><?= $cartItem->getMenuName()  ?></div>
+                                            <div class="menutitle"><span class="cartlabel">Qty</span>X <?= $cartItem->getNo_of_serving()  ?></div>
+                                            <div class="menutitle"><span class="cartlabel">Unit Price (Ugx)</span><?= $cartItem->getAmount()  ?> </div>
+                                            <div class="menutitle"><span class="cartlabel">Total (Ugx) </span><?= $cartItem->getTotal_amount()  ?> </div>
+                                        </div>
                                     </div>
-                                </div>
 
-                            <?php endforeach ?>
+                                <?php endforeach ?>
+
+                            </div>
+
+
+
 
                         </div>
 
-
-
-
-                    </div>
-
-                <?php else :  ?>
-                    No Order Detail exists
-                <?php endif ?>
-
-            </div>
-
-
-            <div class="sponserdiv">
-                <div class="sponsorshipform">
-                    <div class="sponsormessagediv">
-
-                    </div>
-                    <form id="approveform" action="" method="POST">
-
-                        <div class="form-group">
-                            <input id="childnameinput" type="hidden" name="childname" class="form-control" placeholder="order_id" disabled>
-                            <input id="order_status_id" type="hidden" name="order_status" class="form-control" placeholder="order_status" disabled>
-                        </div>
-
-                        <div class="approveorderform">
-                            <h1>Approve Order</h1>
-                            <p>All approved orders are accessed through the Order Page </p>
-                        </div>
-
-                        <div class="deleteorder" style="display: none;">
-                            <h1>Delete Order</h1>
-                            <p>This action can not be reversed when done! </p>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
-                        </div>
-                        <div class="form-group">
-                            <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
-                        </div>
-                    </form>
+                    <?php else :  ?>
+                        No Order Detail exists
+                    <?php endif ?>
 
                 </div>
-            </div>
 
 
+                <div class="sponserdiv">
+                    <div class="sponsorshipform">
+                        <div class="sponsormessagediv">
+
+                        </div>
+                        <form id="approveform" action="" method="POST">
+
+                            <div class="form-group">
+                                <input id="childnameinput" type="hidden" name="childname" class="form-control" placeholder="order_id" disabled>
+                                <input id="order_status_id" type="hidden" name="order_status" class="form-control" placeholder="order_status" disabled>
+                            </div>
+
+                            <div class="approveorderform">
+                                <h1>Approve Order</h1>
+                                <p>All approved orders are accessed through the Order Page </p>
+                            </div>
+
+                            <div class="deleteorder" style="display: none;">
+                                <h1>Delete Order</h1>
+                                <p>This action can not be reversed when done! </p>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
+                            </div>
+                            <div class="form-group">
+                                <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+
+            <?php else :  ?>
+                Order Detail Failed
+            <?php endif ?>
 
         </div>
     </main>
