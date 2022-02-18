@@ -53,7 +53,7 @@ require("../queries/classes/MenuType.php");
   <main>
     <div class="sidepanel">
       <div class="about">
-      <div class="title">
+        <div class="title">
           <img src="assets/zodongologo.png" alt="">
         </div>
       </div>
@@ -77,7 +77,7 @@ require("../queries/classes/MenuType.php");
     </div>
     <div class="mainpanel">
 
-    <div class="createnew">
+      <div class="createnew">
         <a class="createnewbtn">Add Menu Item</a>
       </div>
 
@@ -107,7 +107,7 @@ require("../queries/classes/MenuType.php");
 
 
                     <div class="menuitemactionbutton">
-                    <div class="cancebutton_parent">
+                      <div class="cancebutton_parent">
                         <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getMenu_id() ?>">
                         <button class="cancelbutton">Delete</button>
                       </div>
@@ -167,35 +167,44 @@ require("../queries/classes/MenuType.php");
                 <input type="text" id="name" name="name" class="form-control" placeholder="Menu Item Name">
               </div>
               <div class="form-group">
-              <?php if ($menuTypesIds) : ?>
-                <select id="category" name="Category" class="form-control">
+                <?php if ($menuTypesIds) : ?>
+                  <select id="category" name="Category" class="form-control">
 
-                  <?php
-                  foreach ($menuTypesIds as $row) :
-                  ?>
-
+                    <option value="0">
+                      Choose Category
+                    </option>
                     <?php
-                    $menu_type = new MenuType($con, $row);
+                    foreach ($menuTypesIds as $row) :
                     ?>
 
-                    <option value="  <?= $menu_type->getId()  ?>">
-                      <?= $menu_type->getName()  ?>
+                      <?php
+                      $menu_type = new MenuType($con, $row);
+                      ?>
+
+                      <option value="  <?= $menu_type->getId()  ?>">
+                        <?= $menu_type->getName()  ?>
+                      </option>
+                    <?php endforeach ?>
+                  </select>
+                <?php else :  ?>
+                  <select name="Category" class="form-control">
+                    <option value="0">
+                      No categories found
                     </option>
-                  <?php endforeach ?>
-                </select>
-              <?php else :  ?>
-                <select name="Category" class="form-control">
-                  <option value="0">
-                  No categories found
-                  </option>
-                </select>
-              <?php endif ?>
+                  </select>
+                <?php endif ?>
               </div>
               <div class="form-group">
-                <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order">
+                <input type="number" id="number" name="display_order" class="form-control" placeholder="Price">
               </div>
               <div class="form-group">
-                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*" />
+                <input type="text" id="description" name="display_order" class="form-control" placeholder="Description">
+              </div>
+              <div class="form-group">
+                <input type="text" id="ingredients" name="display_order" class="form-control" placeholder="Ingredients">
+              </div>
+              <div class="form-group">
+                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*"  placeholder="Choose Image" />
               </div>
 
               <div class="form-group">

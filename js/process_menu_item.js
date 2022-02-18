@@ -86,6 +86,8 @@ $(document).ready(function () {
       var banner_name = $("input#name").val();
       var banner_number = $("input#number").val();
       var category_id = $("#category").val();
+      var menu_descritption = $("input#description").val();
+      var menu_ingredients = $("input#ingredients").val();
 
       // File upload required
       const inputfile = document.getElementById("file-input-createplaylist");
@@ -98,6 +100,14 @@ $(document).ready(function () {
         }, 2000);
         return false;
       }
+
+      if (category_id <= 0) {
+        $("#error").fadeIn().text("Error!, Provide Menu Category ID");
+          setTimeout(function () {
+            $("#error").hide();
+          }, 2000);
+          return false;
+        }
 
       //check image size should be < 3.6M
       if (inputfile.files[0]["size"] > 3620127) {
@@ -123,7 +133,19 @@ $(document).ready(function () {
         "banner_name",
         banner_name.replace(/['"]+/g, "").replace(/[^\w\s]/gi, "")
       );
-      formdata.append("banner_number", banner_number);
+      formdata.append(
+        "menu_descritption",
+        menu_descritption.replace(/['"]+/g, "").replace(/[^\w\s]/gi, "")
+      );
+      formdata.append(
+        "menu_ingredients",
+        menu_ingredients.replace(/['"]+/g, "").replace(/[^\w\s]/gi, "")
+      );
+
+      formdata.append(
+        "banner_number",
+        banner_number.replace(/['"]+/g, "").replace(/[^\w\s]/gi, "")
+      );
       formdata.append("category_id", category_id);
 
 
@@ -163,7 +185,7 @@ $(document).ready(function () {
           }, 4000);
 
           document.getElementById("approveform").reset();
-          window.location.href = "banners.php";
+          window.location.href = "menuitems.php";
         }
       })
       .catch(console.error);

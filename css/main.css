@@ -872,6 +872,12 @@ main .active {
   color: white !important;
 }
 
+main #error {
+  color: red;
+  padding: 10px 0;
+  font-size: 15px;
+}
+
 main .smalltag {
   background: #86ffa0 !important;
   padding: 0.1em 1em !important;
