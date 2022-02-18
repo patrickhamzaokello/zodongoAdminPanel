@@ -188,7 +188,7 @@ $(document).ready(function () {
           window.location.href = "menuitems.php";
         }
       })
-      .catch(console.error);
+      .catch(console.log(error));
 
     event.preventDefault();
   });

@@ -78,9 +78,7 @@ require "queries/classes/Order.php";
         <h6 class="sectionlable">All Major statistics</h6>
       </div>
       <div class="statistics">
-        <div class="card">
-
-
+        <div class="card" style="background:#62ff8b">
           <div class="illustration">
             <img src="images/fontisto_shopping-basket.svg" alt="" />
           </div>
