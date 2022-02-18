@@ -15,10 +15,12 @@ if (isset($_POST['order_action'])) {
   $order_action = $_POST['order_action'];
 
   if ($order_action == 1) {
-    if (isset($_POST['banner_name']) && isset($_POST['banner_number'])) {
+    if (isset($_POST['banner_name']) && isset($_POST['banner_number']) && isset($_POST['category_id'])) {
 
       $name = $_POST['banner_name'];
       $banner_number = $_POST['banner_number'];
+      $category_id = $_POST['category_id'];
+
 
       // generating image name
       $formatedname = strip_tags($name);
@@ -34,7 +36,7 @@ if (isset($_POST['order_action'])) {
       $db_targetPath = $db_target_dir . basename($newfilename);
 
       if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
-        $query = mysqli_query($con, "INSERT INTO `tblbanner`(`name`, `imageUrl`, `status`, `display_order`)VALUES('$name','$db_targetPath',1,$banner_number)");
+        $query = mysqli_query($con, "INSERT INTO `tblbanner`(`name`, `imageUrl`,  `category_id`, `status`, `display_order`)VALUES('$name','$db_targetPath',$category_id,1,$banner_number)");
 
         $data['success'] = true;
         $data['message'] = 'Banner Added!';
@@ -49,11 +51,12 @@ if (isset($_POST['order_action'])) {
   } elseif ($order_action == 2) {
 
     // if update btn is click
-    if (isset($_POST['banner_id']) && isset($_POST['banner_name']) && isset($_POST['banner_number'])) {
+    if (isset($_POST['banner_id']) && isset($_POST['banner_name']) && isset($_POST['banner_number']) && isset($_POST['category_id'])) {
 
       $name = $_POST['banner_name'];
       $banner_number = $_POST['banner_number'];
       $banner_id = $_POST['banner_id'];
+      $category_id = $_POST['category_id'];
 
       $banneritems_sql = mysqli_query($con, "SELECT imageUrl FROM tblbanner  WHERE  `id` = $banner_id LIMIT 1");
       $row = mysqli_fetch_array($banneritems_sql);
@@ -83,7 +86,7 @@ if (isset($_POST['order_action'])) {
 
 
         if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
-          $query = mysqli_query($con,"UPDATE `tblbanner` SET `name`='$name',`imageUrl`='$db_targetPath',`display_order`=$banner_number,`datemodified`='$date' WHERE  `id` = $banner_id ");
+          $query = mysqli_query($con,"UPDATE `tblbanner` SET `name`='$name',`imageUrl`='$db_targetPath', `category_id`, = '', `display_order`=$banner_number,`datemodified`='$date' WHERE  `id` = $banner_id ");
 
           $data['success'] = true;
           $data['message'] = 'Banner Updated!';

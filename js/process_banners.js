@@ -83,11 +83,9 @@ $(document).ready(function () {
     var banner_id = $("input#bannername").val();
 
     if (order_action != 3) {
-      //First name required
       var banner_name = $("input#name").val();
-
-      // last name required
       var banner_number = $("input#number").val();
+      var category_id = $("#category").val();
 
       // File upload required
       const inputfile = document.getElementById("file-input-createplaylist");
@@ -126,6 +124,8 @@ $(document).ready(function () {
         banner_name.replace(/['"]+/g, "").replace(/[^\w\s]/gi, "")
       );
       formdata.append("banner_number", banner_number);
+      formdata.append("category_id", category_id);
+
 
       if (order_action == 2) {
         formdata.append("banner_id", banner_id);

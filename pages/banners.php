@@ -21,6 +21,9 @@ require('../queries/statsquery.php');
 require('../queries/banner_queries.php');
 require("../queries/classes/Banners.php");
 
+require('../queries/menutypes.php');
+require("../queries/classes/MenuType.php");
+
 
 
 ?>
@@ -166,6 +169,31 @@ require("../queries/classes/Banners.php");
 
               <div class="form-group">
                 <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name">
+              </div>
+              <div class="form-group">
+              <?php if ($menuTypesIds) : ?>
+                <select id="category" name="Category" class="form-control">
+
+                  <?php
+                  foreach ($menuTypesIds as $row) :
+                  ?>
+
+                    <?php
+                    $menu_type = new MenuType($con, $row);
+                    ?>
+
+                    <option value="  <?= $menu_type->getId()  ?>">
+                      <?= $menu_type->getName()  ?>
+                    </option>
+                  <?php endforeach ?>
+                </select>
+              <?php else :  ?>
+                <select name="Category">
+                  <option value="0">
+                  No categories found
+                  </option>
+                </select>
+              <?php endif ?>
               </div>
               <div class="form-group">
                 <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order">
