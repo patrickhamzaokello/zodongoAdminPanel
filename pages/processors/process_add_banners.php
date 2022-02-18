@@ -10,41 +10,136 @@ $data = [];
 $target_dir  = '../assets/banners/';
 $db_target_dir  = 'assets/banners/';
 
+if (isset($_POST['order_action'])) {
 
-if (isset($_POST['banner_name']) && isset($_POST['banner_number'])) {
+  $order_action = $_POST['order_action'];
 
-  $name = $_POST['banner_name'];
-  $banner_number = $_POST['banner_number'];
+  if ($order_action == 1) {
+    if (isset($_POST['banner_name']) && isset($_POST['banner_number'])) {
 
-  // generating image name
-  $formatedname = strip_tags($name);
-  $formatedname = str_replace(" ", "_", $formatedname);
+      $name = $_POST['banner_name'];
+      $banner_number = $_POST['banner_number'];
 
-  $temp = explode(".", $_FILES["inputfile"]["name"]);
+      // generating image name
+      $formatedname = strip_tags($name);
+      $formatedname = str_replace(" ", "_", $formatedname);
 
-  // setting image new file name
-  $postfix = '_' . date('YmdHis') . '_' . str_pad(rand(1, 10000), 5, '0', STR_PAD_LEFT);
-  $newfilename = stripslashes($formatedname . '_banner') . $postfix . '.' . end($temp);
+      $temp = explode(".", $_FILES["inputfile"]["name"]);
 
-  $targetPath = $target_dir . basename($newfilename);
-  $db_targetPath = $db_target_dir . basename($newfilename);
+      // setting image new file name
+      $postfix = '_' . date('YmdHis') . '_' . str_pad(rand(1, 10000), 5, '0', STR_PAD_LEFT);
+      $newfilename = stripslashes($formatedname . '_banner') . $postfix . '.' . end($temp);
 
-  if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
-    $query = mysqli_query($con, "INSERT INTO `tblbanner`(`name`, `imageUrl`, `status`, `display_order`)VALUES('$name','$db_targetPath',1,$banner_number)");
+      $targetPath = $target_dir . basename($newfilename);
+      $db_targetPath = $db_target_dir . basename($newfilename);
 
-    $data['success'] = true;
-    $data['message'] = 'Banner Added!';
-  } else {
-    $data['success'] = false;
-    $data['message'] = 'Banner not Added';
+      if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
+        $query = mysqli_query($con, "INSERT INTO `tblbanner`(`name`, `imageUrl`, `status`, `display_order`)VALUES('$name','$db_targetPath',1,$banner_number)");
+
+        $data['success'] = true;
+        $data['message'] = 'Banner Added!';
+      } else {
+        $data['success'] = false;
+        $data['message'] = 'Banner not Added';
+      }
+    } else {
+      $data['success'] = false;
+      $data['message'] = 'Banner not Added';
+    }
+  } elseif ($order_action == 2) {
+
+    // if update btn is click
+    if (isset($_POST['banner_id']) && isset($_POST['banner_name']) && isset($_POST['banner_number'])) {
+
+      $name = $_POST['banner_name'];
+      $banner_number = $_POST['banner_number'];
+      $banner_id = $_POST['banner_id'];
+
+      $banneritems_sql = mysqli_query($con, "SELECT imageUrl FROM tblbanner  WHERE  `id` = $banner_id LIMIT 1");
+      $row = mysqli_fetch_array($banneritems_sql);
+      $b_image_path = $row['imageUrl'];
+      $whole_image_path = "../" . $b_image_path;
+
+      // Use unlink() function to delete a file 
+      if (!unlink($whole_image_path)) {
+        $data['success'] = false;
+        $data['message'] = 'Image can not be deleted due to an error';
+      } else {
+
+        // generating image name
+        $formatedname = strip_tags($name);
+        $formatedname = str_replace(" ", "_", $formatedname);
+
+        $temp = explode(".", $_FILES["inputfile"]["name"]);
+        $date = date('YmdHis');
+
+
+        // setting image new file name
+        $postfix = '_' . $date . '_' . str_pad(rand(1, 10000), 5, '0', STR_PAD_LEFT);
+        $newfilename = stripslashes($formatedname . '_banner') . $postfix . '.' . end($temp);
+
+        $targetPath = $target_dir . basename($newfilename);
+        $db_targetPath = $db_target_dir . basename($newfilename);
+
+
+        if (move_uploaded_file($_FILES['inputfile']['tmp_name'], $targetPath)) {
+          $query = mysqli_query($con,"UPDATE `tblbanner` SET `name`='$name',`imageUrl`='$db_targetPath',`display_order`=$banner_number,`datemodified`='$date' WHERE  `id` = $banner_id ");
+
+          $data['success'] = true;
+          $data['message'] = 'Banner Updated!';
+        } else {
+          $data['success'] = false;
+          $data['message'] = 'Banner not Updated';
+        }
+      }
+    } else {
+      $data['success'] = false;
+      $data['message'] = 'Banner not Updated';
+    }
+  } elseif ($order_action == 3) {
+
+    //delete btn clicked
+
+    if (isset($_POST['banner_id'])) {
+
+      $banner_id = $_POST['banner_id'];
+
+      $banneritems_sql = mysqli_query($con, "SELECT imageUrl FROM tblbanner  WHERE  `id` = $banner_id LIMIT 1");
+      $row = mysqli_fetch_array($banneritems_sql);
+      $b_image_path = $row['imageUrl'];
+      $whole_image_path = "../" . $b_image_path;
+
+      // Use unlink() function to delete a file 
+      if (!unlink($whole_image_path)) {
+        $data['success'] = false;
+        $data['message'] = 'Image can not be deleted due to an error';
+      } else {
+        $delete_order_sql = "DELETE FROM `tblbanner` WHERE  `id` = $banner_id";
+
+        mysqli_query($con, $delete_order_sql);
+
+        $affected_rows = mysqli_affected_rows($con);
+
+        if ($affected_rows >= 1) {
+          $data['success'] = true;
+          $data['message'] = $affected_rows . ' Banner Deleted! ';
+        } else if ($affected_rows <= 0) {
+          $data['success'] = false;
+          $data['message'] = 'Banner with ID ' . $childname . ' Not Deleted';
+        }
+      }
+    } else {
+      $data['success'] = false;
+      $data['message'] = 'Banner ID not Passed';
+    }
   }
 } else {
   $data['success'] = false;
-  $data['message'] = 'Banner not Added';
+  $data['message'] = 'Undetermined Function';
 }
 
-echo json_encode($data);
 
+echo json_encode($data);
 
 
 //getting current page url

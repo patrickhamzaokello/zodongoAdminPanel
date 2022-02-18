@@ -102,12 +102,23 @@ require("../queries/classes/Banners.php");
 
 
                     <div class="menuitemactionbutton">
+                      <!-- 
                       <p>
                         <a href="#" class="product-card__link ">Delete</a>
                       </p>
                       <div class="menuitem-card__actions">
                         <a href="#" target="_blank" class="">Update</a>
+                      </div> -->
+
+                      <div class="cancebutton_parent">
+                        <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getId() ?>">
+                        <button class="cancelbutton">Delete</button>
                       </div>
+                      <div class="approvebutton_parent">
+                        <input class="cardID" type="hidden" name="orderID" value="<?= $menu->getId() ?>">
+                        <button class="approvebutton">Update</button>
+                      </div>
+
                     </div>
 
                     <h1><?= $menu->getName()  ?></h1>
@@ -147,26 +158,44 @@ require("../queries/classes/Banners.php");
             </div>
 
             <div class="approveorderform">
-              <h1>Add New Banner</h1>
-              <p>Banners are displayed on the home screen of the mobile app</p>
+              <h1>Update Banner</h1>
+              <p>Provide New Banner Details</p>
+
+              <div id="error"></div>
+
+
+              <div class="form-group">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name">
+              </div>
+              <div class="form-group">
+                <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order">
+              </div>
+              <div class="form-group">
+                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Update Banner" style="width: 100% !important;" class="sponsorchildnowbtn">
+              </div>
+              <div class="form-group">
+                <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+              </div>
             </div>
 
-            <div class="form-group">
-              <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name" required>
-            </div>
-            <div class="form-group">
-              <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order" required>
-            </div>
-            <div class="form-group">
-              <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' required />
+            <div class="deleteorder" style="display: none;">
+              <h1>Delete Banner</h1>
+              <p>This action can not be reversed when done! </p>
+
+
+              <div class="form-group">
+                <input type="submit" value="Delete" style="width: 100% !important;" class="sponsorchildnowbtn">
+              </div>
+              <div class="form-group">
+                <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+              </div>
             </div>
 
-            <div class="form-group">
-              <input type="submit" value="Add Banner" style="width: 100% !important;" class="sponsorchildnowbtn">
-            </div>
-            <div class="form-group">
-              <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
-            </div>
+
           </form>
 
         </div>
