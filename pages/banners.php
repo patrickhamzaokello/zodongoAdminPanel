@@ -162,7 +162,7 @@ require("../queries/classes/Banners.php");
             </div>
 
             <div class="form-group">
-              <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
+              <input type="submit" value="Add Banner" style="width: 100% !important;" class="sponsorchildnowbtn">
             </div>
             <div class="form-group">
               <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>

@@ -72,12 +72,12 @@ $(document).ready(function () {
         if (!data .success) {
           console.log("failure" + data );
           $(".sponsormessagediv").html(
-            '<div class="alert alert-success">' + data.message + "</div>"
+            '<div class="alert alert-error">' + data.message + "</div>"
           );
           setTimeout(function () {
             $(".sponsormessagediv").html("");
             sponsorshipform.style.display = "none";
-          }, 3000);
+          }, 4000);
         } else {
           console.log("success" + data );
           $(".sponsormessagediv").html(
@@ -86,7 +86,7 @@ $(document).ready(function () {
           setTimeout(function () {
             $(".sponsormessagediv").html("");
             sponsorshipform.style.display = "none";
-          }, 3000);
+          }, 4000);
   
           document.getElementById("approveform").reset();
           window.location.href = "banners.php";

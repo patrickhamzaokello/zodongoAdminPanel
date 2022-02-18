@@ -204,15 +204,11 @@ main {
 
 
     .createnew {
-      margin: 0 1em;
-      background: #fff;
-      padding: 1.5em;
-      border-radius: 5px;
-
-
+      padding: 1em;
+      
       a {
         padding: 10px 15px;
-        background: black;
+        background: #00993d;
         color: white;
         border-radius: 5px;
         cursor: pointer;
@@ -703,6 +699,36 @@ main {
       margin-top: 0.5em;
       margin-bottom: 1em;
     }
+  }
+
+
+  .alert-success{
+    border: 1px solid #2ced2c;
+    padding: 10px;
+    border-radius: 6px;
+    color: #00bd00;
+    text-align: center;
+    margin-bottom: 1em;
+    transition: .3s ease-in-out;
+
+  }
+
+  .alert-error{
+    border: 1px solid #ed2c2c;
+    padding: 10px;
+    border-radius: 6px;
+    color: #bd0000;
+    text-align: center;
+    margin-bottom: 1em;
+    transition: .3s ease-in-out;
+  }
+
+  .form-control {
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    border: 1px solid #cbcbcb;
+    color: black;
   }
 
   .sponsorchildnowbtn:hover {

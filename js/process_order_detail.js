@@ -84,7 +84,7 @@ $(document).ready(function () {
     }).done(function (data) {
       if (!data.success) {
         $(".sponsormessagediv").html(
-          '<div class="alert alert-success">' + data.message + "</div>"
+          '<div class="alert alert-error">' + data.message + "</div>"
         );
         setTimeout(function () {
           $(".sponsormessagediv").html("");
