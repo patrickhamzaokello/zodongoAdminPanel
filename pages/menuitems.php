@@ -216,7 +216,7 @@ require("../queries/classes/MenuType.php");
             </div>
 
             <div class="deleteorder" style="display: none;">
-              <h1>Delete Banner</h1>
+              <h1>Delete Menu Item</h1>
               <p>This action can not be reversed when done! </p>
 
 

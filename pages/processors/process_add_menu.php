@@ -110,9 +110,9 @@ if (isset($_POST['order_action'])) {
 
       $banner_id = $_POST['banner_id'];
 
-      $banneritems_sql = mysqli_query($con, "SELECT imageUrl FROM tblbanner  WHERE  `id` = $banner_id LIMIT 1");
+      $banneritems_sql = mysqli_query($con, "SELECT menu_image FROM tblmenu  WHERE  `menu_id` = $banner_id LIMIT 1");
       $row = mysqli_fetch_array($banneritems_sql);
-      $b_image_path = $row['imageUrl'];
+      $b_image_path = $row['menu_image'];
       $whole_image_path = "../" . $b_image_path;
 
       // Use unlink() function to delete a file 
@@ -120,7 +120,7 @@ if (isset($_POST['order_action'])) {
         $data['success'] = false;
         $data['message'] = 'Image can not be deleted due to an error';
       } else {
-        $delete_order_sql = "DELETE FROM `tblbanner` WHERE  `id` = $banner_id";
+        $delete_order_sql = "DELETE FROM `tblmenu` WHERE  `menu_id` = $banner_id";
 
         mysqli_query($con, $delete_order_sql);
 
