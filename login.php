@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="formtitle">
 
+                    <!-- <img class="zodongologinlogo" src="pages/assets/zodongo_logo.png" alt=""> -->
                         <p class="logintext">Admin Login</p>
 
                         <p class="newtopwf">Zodongo Foods</p>
