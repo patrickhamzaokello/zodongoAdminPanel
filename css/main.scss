@@ -160,12 +160,12 @@ main {
       }
 
       .title {
-        flex: 1 1 auto;
-        color: white;
-        font-weight: 700;
-        font-size: 25px;
-        padding: 1em;
+        padding: 0.5em;
         box-sizing: border-box;
+
+        img {
+          width: 100%;
+        }
       }
     }
 
@@ -202,10 +202,9 @@ main {
     background: #f8f7ff;
     overflow-y: auto;
 
-
     .createnew {
       padding: 1em;
-      
+
       a {
         padding: 10px 15px;
         background: #00993d;
@@ -213,7 +212,6 @@ main {
         border-radius: 5px;
         cursor: pointer;
       }
-
     }
 
     .sectionheading {
@@ -701,26 +699,24 @@ main {
     }
   }
 
-
-  .alert-success{
+  .alert-success {
     border: 1px solid #2ced2c;
     padding: 10px;
     border-radius: 6px;
     color: #00bd00;
     text-align: center;
     margin-bottom: 1em;
-    transition: .3s ease-in-out;
-
+    transition: 0.3s ease-in-out;
   }
 
-  .alert-error{
+  .alert-error {
     border: 1px solid #ed2c2c;
     padding: 10px;
     border-radius: 6px;
     color: #bd0000;
     text-align: center;
     margin-bottom: 1em;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 
   .form-control {
@@ -741,7 +737,7 @@ main {
     margin-right: 1em;
   }
 
-  .cancelbutton:hover{
+  .cancelbutton:hover {
     background: rgb(235, 36, 36) !important;
     color: rgb(255, 255, 255);
     border: 1px solid rgb(235, 36, 36) !important;
@@ -757,7 +753,7 @@ main {
     border-radius: 5px;
   }
 
-  .approvebutton:hover{
+  .approvebutton:hover {
     background: rgb(10, 180, 25) !important;
     color: rgb(255, 255, 255);
     border: 1px solid rgb(10, 180, 25) !important;

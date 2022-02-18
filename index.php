@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +50,9 @@ require "queries/classes/Order.php";
   <main>
     <div class="sidepanel">
       <div class="about">
-        <div class="title">Zodongo Foods</div>
+        <div class="title">
+          <img src="pages/assets/zodongologo.png" alt="">
+        </div>
       </div>
       <div class="sidemenu">
         <a href="index" class="menu active">
@@ -78,8 +79,8 @@ require "queries/classes/Order.php";
       </div>
       <div class="statistics">
         <div class="card">
-         
-          
+
+
           <div class="illustration">
             <img src="images/fontisto_shopping-basket.svg" alt="" />
           </div>
@@ -90,41 +91,41 @@ require "queries/classes/Order.php";
         </div>
 
         <div class="card">
-        <div class="illustration">
+          <div class="illustration">
             <img src="images/bxs_food-menu.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Menu</p>
             <p class="number"><?= $totalMenuActivestat ?></p>
           </div>
-      
+
         </div>
         <div class="card">
-        <div class="illustration">
+          <div class="illustration">
             <img src="images/bx_category.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Categories</p>
             <p class="number"><?= $totalMenuType_stat ?></p>
           </div>
-     
+
         </div>
         <div class="card">
-        <div class="illustration">
+          <div class="illustration">
             <img src="images/carbon_user-multiple.svg" alt="" />
           </div>
           <div class="stats">
             <p class="label">Users</p>
             <p class="number"><?= $total_customers_stat ?></p>
           </div>
-        
+
         </div>
       </div>
       <div class="sectionheading">
         <h3 class="sectionlable">New Orders</h3>
         <h6 class="sectionlable">All New Orders</h6>
       </div>
-      
+
       <div class="elements">
 
         <div class="activities">

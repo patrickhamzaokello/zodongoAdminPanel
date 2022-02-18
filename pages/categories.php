@@ -50,7 +50,9 @@ require("../queries/classes/MenuType.php");
   <main>
     <div class="sidepanel">
       <div class="about">
-        <div class="title">Zodongo Foods</div>
+      <div class="title">
+          <img src="assets/zodongologo.png" alt="">
+        </div>
       </div>
       <div class="sidemenu">
         <a href="../index" class="menu">
