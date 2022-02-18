@@ -231,6 +231,21 @@ main .mainpanel {
   overflow-y: auto;
 }
 
+main .mainpanel .createnew {
+  margin: 0 1em;
+  background: #fff;
+  padding: 1.5em;
+  border-radius: 5px;
+}
+
+main .mainpanel .createnew a {
+  padding: 10px 15px;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 main .mainpanel .sectionheading {
   padding: 0 1em;
   font-family: "Montserrat", sans-serif;

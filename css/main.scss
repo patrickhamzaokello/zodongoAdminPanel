@@ -202,6 +202,24 @@ main {
     background: #f8f7ff;
     overflow-y: auto;
 
+
+    .createnew {
+      margin: 0 1em;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 5px;
+
+
+      a {
+        padding: 10px 15px;
+        background: black;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+    }
+
     .sectionheading {
       padding: 0 1em;
       font-family: "Montserrat", sans-serif;

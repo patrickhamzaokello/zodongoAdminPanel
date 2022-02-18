@@ -72,6 +72,11 @@ require("../queries/classes/Banners.php");
     </div>
     <div class="mainpanel">
 
+      <div class="createnew">
+        <a class="createnewbtn">Add New Banner</a>
+      </div>
+
+
       <div class="elements">
 
         <div class="activities">
@@ -121,7 +126,7 @@ require("../queries/classes/Banners.php");
 
 
           <?php else :  ?>
-            Working on Getting Menu Categories for You
+            No Banners Available on the app
           <?php endif ?>
 
 
@@ -130,11 +135,46 @@ require("../queries/classes/Banners.php");
 
       </div>
 
+      <div class="sponserdiv">
+        <div class="sponsorshipform">
+          <div class="sponsormessagediv">
 
+          </div>
+          <form id="approveform" action="" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <input id="bannername" type="hidden" name="childname" class="form-control" placeholder="order_id" disabled>
+            </div>
+
+            <div class="approveorderform">
+              <h1>Add New Banner</h1>
+              <p>Banners are displayed on the home screen of the mobile app</p>
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name" required>
+            </div>
+            <div class="form-group">
+              <input type="number" id="number" name="display_order" class="form-control" placeholder="Display Order" required>
+            </div>
+            <div class="form-group">
+              <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' required />
+            </div>
+
+            <div class="form-group">
+              <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
+            </div>
+            <div class="form-group">
+              <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
     </div>
   </main>
 
-
+  <script src="../js/process_banners.js"></script>
 
 
 
