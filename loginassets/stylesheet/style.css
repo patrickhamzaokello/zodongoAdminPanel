@@ -1,5 +1,5 @@
 body {
-  background: #f9f9f9;
+  background: #ebebeb;
   position: relative;
   margin: 0;
   padding: 0;
@@ -12,10 +12,10 @@ body {
 
 .inputbox {
   width: 100%;
-  color: #000 !important;
-  background: #fdfffe !important;
+  color: #000000 !important;
+  background: #ebebeb !important;
   border: none;
-  border: 1px solid #e8f0fe;
+  border: 1px solid #ebebeb;
   box-sizing: border-box;
   padding: 18px 20px;
   margin: 5px 0;
@@ -36,8 +36,8 @@ body {
   padding: 15px 20px;
   border-radius: 50px;
   width: 100%;
-  background: #6F0E9D;
-  border: 1px solid #6F0E9D;
+  background: #000000;
+  border: 1px solid #000000;
   color: white;
   margin-top: 1em;
 }
@@ -111,11 +111,11 @@ body {
 
 
 .errorinnerdiv {
-  background: #e91e63;
+  background: #33ac47;
   width: 350px;
   padding: 2em;
   border-radius: 10px;
-  border: 1px solid #e91e63;
+  border: 1px solid #33ac47;
   text-align: center;
 }
 
