@@ -730,6 +730,38 @@ main {
     border: 1px solid #cbcbcb;
     color: black;
   }
+  .cancelbutton {
+    padding: 5px 18px;
+    background: #fff !important;
+    color: black;
+    border: 1px solid #000 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: 5px;
+    margin-right: 1em;
+  }
+
+  .cancelbutton:hover{
+    background: rgb(235, 36, 36) !important;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(235, 36, 36) !important;
+  }
+
+  .approvebutton {
+    padding: 5px 18px;
+    background: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255);
+    border: 1px solid #000 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: 5px;
+  }
+
+  .approvebutton:hover{
+    background: rgb(10, 180, 25) !important;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(10, 180, 25) !important;
+  }
 
   .sponsorchildnowbtn:hover {
     background: #027c3a;

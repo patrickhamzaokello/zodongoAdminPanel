@@ -817,6 +817,39 @@ main .form-control {
   color: black;
 }
 
+main .cancelbutton {
+  padding: 5px 18px;
+  background: #fff !important;
+  color: black;
+  border: 1px solid #000 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 5px;
+  margin-right: 1em;
+}
+
+main .cancelbutton:hover {
+  background: #eb2424 !important;
+  color: white;
+  border: 1px solid #eb2424 !important;
+}
+
+main .approvebutton {
+  padding: 5px 18px;
+  background: black !important;
+  color: white;
+  border: 1px solid #000 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 5px;
+}
+
+main .approvebutton:hover {
+  background: #0ab419 !important;
+  color: white;
+  border: 1px solid #0ab419 !important;
+}
+
 main .sponsorchildnowbtn:hover {
   background: #027c3a;
 }

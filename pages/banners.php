@@ -21,7 +21,7 @@ require('../queries/statsquery.php');
 require('../queries/banner_queries.php');
 require("../queries/classes/Banners.php");
 
-require('../queries/menutypes.php');
+require('../queries/menutype_with_food.php');
 require("../queries/classes/MenuType.php");
 
 
@@ -125,10 +125,10 @@ require("../queries/classes/MenuType.php");
                     </div>
 
                     <h1><?= $menu->getName()  ?></h1>
-                    <p class="description">Display Order: <?= $menu->getDisplay_order()  ?></p>
-
-                    <p class="date"><span>Date Created </span><?= $menu->getDatecreated()  ?></p>
-                    <p class="date"><span>Last Update </span><?= $menu->getDatemodified()  ?></p>
+                    <p class="">Category: <?= $menu->getCategory_id()  ?></p>
+                    <p class="description">Display Position: <?= $menu->getDisplay_order() ?></p>
+                    <p class="date"><span>Date Created </span><?= $menu->getDatecreated() ?></p>
+                    <p class="date"><span>Last Update </span><?= $menu->getDatemodified() ?></p>
 
                   </div>
 
@@ -161,7 +161,7 @@ require("../queries/classes/MenuType.php");
             </div>
 
             <div class="approveorderform">
-              <h1>Update Banner</h1>
+              <h1>Banner Details</h1>
               <p>Provide New Banner Details</p>
 
               <div id="error"></div>
@@ -171,11 +171,11 @@ require("../queries/classes/MenuType.php");
                 <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name">
               </div>
               <div class="form-group">
-              <?php if ($menuTypesIds) : ?>
+              <?php if ($menuTypesIds_withfood) : ?>
                 <select id="category" name="Category" class="form-control">
 
                   <?php
-                  foreach ($menuTypesIds as $row) :
+                  foreach ($menuTypesIds_withfood as $row) :
                   ?>
 
                     <?php
@@ -203,7 +203,7 @@ require("../queries/classes/MenuType.php");
               </div>
 
               <div class="form-group">
-                <input type="submit" value="Update Banner" style="width: 100% !important;" class="sponsorchildnowbtn">
+                <input type="submit" value="Approve" style="width: 100% !important;" class="sponsorchildnowbtn">
               </div>
               <div class="form-group">
                 <button type="reset" id="cancelbtn" style="background: #fff;border: 1px solid #000;padding: 10px 20px;width: 100%;color: #000; border-radius: 5px;" onclick="cancelsponsohip()">Cancel </button>

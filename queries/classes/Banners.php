@@ -6,6 +6,7 @@ class Banners {
     private $id;
     private $name;
     private $imageUrl;
+    private $category_id;
     private $status;
     private $display_order;
     private $datecreated;
@@ -19,7 +20,7 @@ class Banners {
         $this->con = $con;
         $this->id = $id;
 
-        $query = mysqli_query($this->con, "SELECT `id`, `name`, `imageUrl`, `status`, `display_order`, `datecreated`, `datemodified` FROM ". $this->TABLE_NAME ." WHERE id ='$this->id'");
+        $query = mysqli_query($this->con, "SELECT `id`, `name`, `imageUrl`,`category_id`, `status`, `display_order`, `datecreated`, `datemodified` FROM ". $this->TABLE_NAME ." WHERE id ='$this->id'");
         $order_fetched = mysqli_fetch_array($query);
 
 
@@ -28,6 +29,7 @@ class Banners {
             $this->id = null;
             $this->name = null;
             $this->imageUrl = null;
+            $this->category_id = null;
             $this->status = null;
             $this->display_order = null;
             $this->datecreated = null;
@@ -37,6 +39,7 @@ class Banners {
             $this->id = $order_fetched['id'];
             $this->name = $order_fetched['name'];
             $this->imageUrl = $order_fetched['imageUrl'];
+            $this->category_id = $order_fetched['category_id'];
             $this->status = $order_fetched['status'];
             $this->display_order = $order_fetched['display_order'];
             $this->datecreated = $order_fetched['datecreated'];
@@ -61,6 +64,16 @@ class Banners {
     {
         return $this->imageUrl;
     }
+
+       /**
+     * Get the value of category_id
+     */ 
+    public function getCategory_id()
+    {
+        $category_name = new MenuType($this->con, $this->category_id);
+        return $category_name->getName();
+    }
+
 
     /**
      * Get the value of status
