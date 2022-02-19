@@ -1,299 +1,284 @@
 <?php
+
 class FoodMenu
 {
 
-	private $itemsTable = "tblmenu";
-	private $ImageBasepath = "https://zodongofoods.com/admin/pages/";
-	public $menu_id;
-	public $menu_name;
-	public $price;
-	public $description;
-	public $menu_type_id;
-	public $menu_image;
-	public $ingredients;
-	public $menu_status;
-	public $created;
-	public $modified;
-	public $rating;
-	public $input_menu_type_id;
-	public $pageno;
-	private $conns;
+    private $itemsTable = "tblmenu";
+    private $ImageBasepath = "https://zodongofoods.com/admin/pages/";
+    public $menu_id;
+    public $menu_name;
+    public $price;
+    public $description;
+    public $menu_type_id;
+    public $menu_image;
+    public $ingredients;
+    public $menu_status;
+    public $created;
+    public $modified;
+    public $rating;
+    public $input_menu_type_id;
+    public $pageno;
+    private $conns;
 
 
+    public function __construct($con)
+    {
+        $this->conns = $con;
+    }
 
-	public function __construct($con)
-	{
-		$this->conns = $con;
-	}
 
-	
+    //get selected category and products in it
+    function readPage()
+    {
 
+        $itemRecords = array();
 
-	//get selected category and products in it
-	function readPage()
-	{
+        $this->menu_id = htmlspecialchars(strip_tags($_GET["page"]));
+        $this->input_menu_type_id = htmlspecialchars(strip_tags($_GET["category"]));
 
-		$itemRecords = array();
 
-		$this->menu_id = htmlspecialchars(strip_tags($_GET["page"]));
-		$this->input_menu_type_id = htmlspecialchars(strip_tags($_GET["category"]));
+        if ($this->menu_id) {
+            $this->pageno = floatval($this->menu_id);
+            $no_of_records_per_page = 10;
+            $offset = ($this->pageno - 1) * $no_of_records_per_page;
 
+            $sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " limit 1";
+            $result = mysqli_query($this->conns, $sql);
+            $data = mysqli_fetch_assoc($result);
+            $total_rows = floatval($data['count']);
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-		if ($this->menu_id) {
-			$this->pageno = floatval($this->menu_id);
-			$no_of_records_per_page = 10;
-			$offset = ($this->pageno - 1) * $no_of_records_per_page;
 
-			$sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " limit 1";
-			$result = mysqli_query($this->conns, $sql);
-			$data = mysqli_fetch_assoc($result);
-			$total_rows = floatval($data['count']);
-			$total_pages = ceil($total_rows / $no_of_records_per_page);
+            $menu_type_sql = "SELECT * FROM tblmenutype WHERE id = " . $this->input_menu_type_id . " limit 1";
+            $menu_type_result = mysqli_query($this->conns, $menu_type_sql);
+            $menu_type_data = mysqli_fetch_assoc($menu_type_result);
 
+            $menu_type_name = $menu_type_data['name'];
+            $menu_type_description = $menu_type_data['description'];
+            $menu_type_imageCover = $menu_type_data['imageCover'];
+            $menu_type_created = $menu_type_data['created'];
 
-			$menu_type_sql = "SELECT * FROM tblmenutype WHERE id = " . $this->input_menu_type_id . " limit 1";
-			$menu_type_result = mysqli_query($this->conns, $menu_type_sql);
-			$menu_type_data = mysqli_fetch_assoc($menu_type_result);
 
-			$menu_type_name = $menu_type_data['name'];
-			$menu_type_description = $this->ImageBasepath.$menu_type_data['description'];
-			$menu_type_imageCover = $this->ImageBasepath.$menu_type_data['imageCover'];
-			$menu_type_created = $menu_type_data['created'];
+            $itemRecords["page"] = $this->pageno;
+            $itemRecords["results"] = array();
+            $itemRecords["total_pages"] = $total_pages;
+            $itemRecords["total_results"] = $total_rows;
 
 
-			$itemRecords["page"] = $this->pageno;
-			$itemRecords["results"] = array();
-			$itemRecords["total_pages"] = $total_pages;
-			$itemRecords["total_results"] = $total_rows;
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
+        } else {
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
+        }
 
 
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
-		} else {
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
-		}
+        $stmt->execute();
+        $stmt->bind_result($this->menu_id, $this->menu_name, $this->price, $this->description, $this->menu_type_id, $this->menu_image, $this->backgroundImage, $this->ingredients, $this->menu_status, $this->created, $this->modified, $this->rating);
 
 
-		$stmt->execute();
-		$stmt->bind_result($menu_id, $menu_name, $price, $description, $menu_type_id, $menu_image, $backgroundImage, $ingredients, $menu_status, $created, $modified, $rating);
+        if ($this->pageno == 1) {
+            $menu_type_temp = array();
 
+            $menu_type_temp['menu_name'] = $menu_type_name;
+            $menu_type_temp['description'] = $menu_type_description;
+            $menu_type_temp['menu_image'] = $this->ImageBasepath . $menu_type_imageCover;
+            $menu_type_temp['backgroundImage'] = $this->ImageBasepath . $menu_type_imageCover;
+            $menu_type_temp['created'] = $menu_type_created;
 
-		if ($this->pageno == 1) {
-			$menu_type_temp = array();
 
-			$menu_type_temp['menu_name'] = $menu_type_name;
-			$menu_type_temp['description'] = $menu_type_description;
-			$menu_type_temp['menu_image'] = $this->ImageBasepath.$menu_type_imageCover;
-			$menu_type_temp['backgroundImage'] = $this->ImageBasepath.$menu_type_imageCover;
-			$menu_type_temp['created'] = $menu_type_created;
+            array_push($itemRecords["results"], $menu_type_temp);
+        }
 
 
+        while ($stmt->fetch()) {
 
-			array_push($itemRecords["results"], $menu_type_temp);
-		}
+            $temp = array();
 
+            $temp['menu_id'] = $this->menu_id;
+            $temp['menu_name'] = $this->menu_name;
+            $temp['price'] = $this->price;
+            $temp['description'] = $this->description;
+            $temp['menu_type_id'] = $this->menu_type_id;
+            $temp['menu_image'] = $this->ImageBasepath . $this->menu_image;
+            $temp['backgroundImage'] = $this->ImageBasepath . $this->backgroundImage;
+            $temp['ingredients'] = $this->description;
+            $temp['menu_status'] = $this->menu_type_id;
+            $temp['created'] = $this->created;
+            $temp['modified'] = $this->modified;
+            $temp['rating'] = $this->rating;
 
-		while ($stmt->fetch()) {
 
-			$temp = array();
+            array_push($itemRecords["results"], $temp);
+        }
 
-			$temp['menu_id'] = $menu_id;
-			$temp['menu_name'] = $menu_name;
-			$temp['price'] = $price;
-			$temp['description'] = $description;
-			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] = $this->ImageBasepath.$menu_image;
-			$temp['backgroundImage'] = $this->ImageBasepath.$backgroundImage;
-			$temp['ingredients'] = $description;
-			$temp['menu_status'] = $menu_type_id;
-			$temp['created'] = $created;
-			$temp['modified'] = $modified;
-			$temp['rating'] = $rating;
 
+        return $itemRecords;
+    }
 
-			array_push($itemRecords["results"], $temp);
-		}
+    //get selected menu details and similar product
+    function readMenuDetail()
+    {
 
+        $itemRecords = array();
 
-		return $itemRecords;
-	}
+        $this->menu_id = htmlspecialchars(strip_tags($_GET["menuId"]));
+        $this->pageno = htmlspecialchars(strip_tags($_GET["page"]));
+        $this->input_menu_type_id = htmlspecialchars(strip_tags($_GET["category"]));
 
-	//get selected menu details and similar product
-	function readMenuDetail()
-	{
+        if ($this->menu_id) {
+            $this->pageno = floatval($this->pageno);
+            $no_of_records_per_page = 6;
+            $offset = ($this->pageno - 1) * $no_of_records_per_page;
 
-		$itemRecords = array();
+            $sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " limit 1";
+            $result = mysqli_query($this->conns, $sql);
+            $data = mysqli_fetch_assoc($result);
+            $total_rows = floatval($data['count']);
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-		$this->menu_id = htmlspecialchars(strip_tags($_GET["menuId"]));
-		$this->pageno = htmlspecialchars(strip_tags($_GET["page"]));
-		$this->input_menu_type_id = htmlspecialchars(strip_tags($_GET["category"]));
 
-		if ($this->menu_id) {
-			$this->pageno = floatval($this->pageno);
-			$no_of_records_per_page = 6;
-			$offset = ($this->pageno - 1) * $no_of_records_per_page;
+            $menu_type_sql = "SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_id = " . $this->menu_id . " limit 1";
+            $menu_type_result = mysqli_query($this->conns, $menu_type_sql);
+            $menu_type_data = mysqli_fetch_assoc($menu_type_result);
 
-			$sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . " WHERE menu_type_id = " . $this->input_menu_type_id . " limit 1";
-			$result = mysqli_query($this->conns, $sql);
-			$data = mysqli_fetch_assoc($result);
-			$total_rows = floatval($data['count']);
-			$total_pages = ceil($total_rows / $no_of_records_per_page);
+            $menu_id = $menu_type_data['menu_id'];
+            $menu_name = $menu_type_data['menu_name'];
+            $price = $menu_type_data['price'];
+            $description = $menu_type_data['description'];
+            $menu_type_id = $menu_type_data['menu_type_id'];
+            $menu_image =   $menu_type_data['menu_image'];
+            $backgroundImage = $menu_type_data['backgroundImage'];
+            $ingredients = $menu_type_data['ingredients'];
+            $menu_status = $menu_type_data['menu_status'];
+            $created = $menu_type_data['created'];
+            $modified = $menu_type_data['modified'];
+            $rating = $menu_type_data['rating'];
 
 
-			$menu_type_sql = "SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_id = " . $this->menu_id . " limit 1";
-			$menu_type_result = mysqli_query($this->conns, $menu_type_sql);
-			$menu_type_data = mysqli_fetch_assoc($menu_type_result);
+            $itemRecords["page"] = $this->pageno;
+            $itemRecords["results"] = array();
+            $itemRecords["total_pages"] = $total_pages;
+            $itemRecords["total_results"] = $total_rows;
 
-			$menu_id = $menu_type_data['menu_id'];
-			$menu_name = 	$menu_type_data['menu_name'];
-			$price = $menu_type_data['price'];
-			$description = $menu_type_data['description'];
-			$menu_type_id = $menu_type_data['menu_type_id'];
-			$menu_image = $this->ImageBasepath.$menu_type_data['menu_image'];
-			$backgroundImage =  $this->ImageBasepath.$menu_type_data['backgroundImage'];
-			$ingredients = $menu_type_data['ingredients'];
-			$menu_status = $menu_type_data['menu_status'];
-			$created = $menu_type_data['created'];
-			$modified = $menu_type_data['modified'];
-			$rating = $menu_type_data['rating'];
 
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_id != " . $this->menu_id . " AND menu_type_id = " . $this->input_menu_type_id . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
+        } else {
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
+        }
 
-			$itemRecords["page"] = $this->pageno;
-			$itemRecords["results"] = array();
-			$itemRecords["total_pages"] = $total_pages;
-			$itemRecords["total_results"] = $total_rows;
 
+        $stmt->execute();
+        $stmt->bind_result($menu_id, $menu_name, $price, $description, $menu_type_id, $menu_image, $backgroundImage, $ingredients, $menu_status, $created, $modified, $rating);
 
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " WHERE menu_id != " . $this->menu_id . " AND menu_type_id = " . $this->input_menu_type_id . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
-		} else {
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
-		}
 
+        if ($this->pageno == 1) {
+            $menudetailtemp = array();
 
-		$stmt->execute();
-		$stmt->bind_result($menu_id, $menu_name, $price, $description, $menu_type_id, $menu_image, $backgroundImage, $ingredients, $menu_status, $created, $modified, $rating);
 
+            $menudetailtemp['menu_id'] = floatval($menu_id);
+            $menudetailtemp['menu_name'] = $menu_name;
+            $menudetailtemp['price'] = floatval($price);
+            $menudetailtemp['description'] = $description;
+            $menudetailtemp['menu_type_id'] = floatval($menu_type_id);
+            $menudetailtemp['menu_image'] = $this->ImageBasepath . $menu_image;
+            $menudetailtemp['backgroundImage'] = $this->ImageBasepath . $backgroundImage;
+            $menudetailtemp['ingredients'] = $ingredients;
+            $menudetailtemp['menu_status'] = floatval($menu_status);
+            $menudetailtemp['created'] = $created;
+            $menudetailtemp['modified'] = $modified;
+            $menudetailtemp['rating'] = floatval($rating);
 
-		if ($this->pageno == 1) {
-			$menudetailtemp = array();
 
+            array_push($itemRecords["results"], $menudetailtemp);
+        }
 
-			$menudetailtemp['menu_id'] = floatval($menu_id);
-			$menudetailtemp['menu_name'] = $menu_name;
-			$menudetailtemp['price'] = floatval($price);
-			$menudetailtemp['description'] = $description;
-			$menudetailtemp['menu_type_id'] = floatval($menu_type_id);
-			$menudetailtemp['menu_image'] =  $this->ImageBasepath.$menu_image;
-			$menudetailtemp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
-			$menudetailtemp['ingredients'] = $ingredients;
-			$menudetailtemp['menu_status'] = floatval($menu_status);
-			$menudetailtemp['created'] = $created;
-			$menudetailtemp['modified'] = $modified;
-			$menudetailtemp['rating'] = floatval($rating);
 
+        while ($stmt->fetch()) {
 
+            $temp = array();
 
-			array_push($itemRecords["results"], $menudetailtemp);
-		}
+            $temp['menu_id'] = $menu_id;
+            $temp['menu_name'] = $menu_name;
+            $temp['price'] = $price;
+            $temp['description'] = $description;
+            $temp['menu_type_id'] = $menu_type_id;
+            $temp['menu_image'] = $this->ImageBasepath . $menu_image;
+            $temp['backgroundImage'] = $this->ImageBasepath . $backgroundImage;
+            $temp['ingredients'] = $description;
+            $temp['menu_status'] = $menu_status;
+            $temp['created'] = $created;
+            $temp['modified'] = $modified;
+            $temp['rating'] = $rating;
 
 
-		while ($stmt->fetch()) {
+            array_push($itemRecords["results"], $temp);
+        }
 
-			$temp = array();
 
-			$temp['menu_id'] = $menu_id;
-			$temp['menu_name'] = $menu_name;
-			$temp['price'] = $price;
-			$temp['description'] = $description;
-			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] =  $this->ImageBasepath.$menu_image;
-			$temp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
-			$temp['ingredients'] = $description;
-			$temp['menu_status'] = $menu_status;
-			$temp['created'] = $created;
-			$temp['modified'] = $modified;
-			$temp['rating'] = $rating;
+        return $itemRecords;
+    }
 
 
-			array_push($itemRecords["results"], $temp);
-		}
+    // search api end point
+    function topMenuItems()
+    {
 
+        $itemRecords = array();
 
-		return $itemRecords;
-	}
+        $this->menu_id = htmlspecialchars(strip_tags($_GET["page"]));
+        $this->input_menu_type_id = 3;
 
 
-	// search api end point
-	function topMenuItems()
-	{
+        if ($this->menu_id) {
+            $this->pageno = floatval($this->menu_id);
+            $no_of_records_per_page = 100;
+            $offset = ($this->pageno - 1) * $no_of_records_per_page;
 
-		$itemRecords = array();
+            $sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . "  limit 1";
+            $result = mysqli_query($this->conns, $sql);
+            $data = mysqli_fetch_assoc($result);
+            $total_rows = floatval($data['count']);
+            $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-		$this->menu_id = htmlspecialchars(strip_tags($_GET["page"]));
-		$this->input_menu_type_id = 3;
 
+            $itemRecords["page"] = $this->pageno;
+            $itemRecords["results"] = array();
+            $itemRecords["total_pages"] = $total_pages;
+            $itemRecords["total_results"] = $total_rows;
 
-		if ($this->menu_id) {
-			$this->pageno = floatval($this->menu_id);
-			$no_of_records_per_page = 100;
-			$offset = ($this->pageno - 1) * $no_of_records_per_page;
 
-			$sql = "SELECT COUNT(*) as count FROM " . $this->itemsTable . "  limit 1";
-			$result = mysqli_query($this->conns, $sql);
-			$data = mysqli_fetch_assoc($result);
-			$total_rows = floatval($data['count']);
-			$total_pages = ceil($total_rows / $no_of_records_per_page);
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
+        } else {
+            $stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
+        }
 
 
-			$menu_type_sql = "SELECT * FROM tblmenutype WHERE id = " . $this->input_menu_type_id . " limit 1";
-			$menu_type_result = mysqli_query($this->conns, $menu_type_sql);
-			$menu_type_data = mysqli_fetch_assoc($menu_type_result);
+        $stmt->execute();
+        $stmt->bind_result($this->menu_id, $this->menu_name, $this->price, $this->description, $this->menu_type_id, $this->menu_image, $this->backgroundImage, $this->ingredients, $this->menu_status, $this->created, $this->modified, $this->rating);
 
-			$menu_type_name = $menu_type_data['name'];
-			$menu_type_description = $menu_type_data['description'];
-			$menu_type_imageCover =  $this->ImageBasepath.$menu_type_data['imageCover'];
-			$menu_type_created = $menu_type_data['created'];
 
+        while ($stmt->fetch()) {
 
-			$itemRecords["page"] = $this->pageno;
-			$itemRecords["results"] = array();
-			$itemRecords["total_pages"] = $total_pages;
-			$itemRecords["total_results"] = $total_rows;
+            $temp = array();
 
+            $temp['menu_id'] = $this->menu_id;
+            $temp['menu_name'] = $this->menu_name;
+            $temp['price'] = $this->price;
+            $temp['description'] = $this->description;
+            $temp['menu_type_id'] = $this->menu_type_id;
+            $temp['menu_image'] = $this->ImageBasepath . $this->menu_image;
+            $temp['backgroundImage'] = $this->ImageBasepath . $this->backgroundImage;
+            $temp['ingredients'] = $this->description;
+            $temp['menu_status'] = $this->menu_type_id;
+            $temp['created'] = $this->created;
+            $temp['modified'] = $this->modified;
+            $temp['rating'] = $this->rating;
 
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable . " ORDER BY menu_id LIMIT " . $offset . "," . $no_of_records_per_page);
-		} else {
-			$stmt = $this->conns->prepare("SELECT menu_id,menu_name, price, description, menu_type_id, menu_image,backgroundImage, ingredients, menu_status, created, modified,rating FROM " . $this->itemsTable);
-		}
 
+            array_push($itemRecords["results"], $temp);
+        }
 
-		$stmt->execute();
-		$stmt->bind_result($menu_id, $menu_name, $price, $description, $menu_type_id, $menu_image, $backgroundImage, $ingredients, $menu_status, $created, $modified, $rating);
 
-
-
-		while ($stmt->fetch()) {
-
-			$temp = array();
-
-			$temp['menu_id'] = $menu_id;
-			$temp['menu_name'] = $menu_name;
-			$temp['price'] = $price;
-			$temp['description'] = $description;
-			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] =  $this->ImageBasepath.$menu_image;
-			$temp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
-			$temp['ingredients'] = $description;
-			$temp['menu_status'] = $menu_type_id;
-			$temp['created'] = $created;
-			$temp['modified'] = $modified;
-			$temp['rating'] = $rating;
-
-
-			array_push($itemRecords["results"], $temp);
-		}
-
-
-		return $itemRecords;
-	}
+        return $itemRecords;
+    }
 
 }
