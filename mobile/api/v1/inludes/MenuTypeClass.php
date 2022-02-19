@@ -3,6 +3,7 @@ class MenuTypeClass
 {
 
     private $itemsTable = "tblmenutype";
+    private $ImageBasepath = "https://zodongofoods.com/admin/pages/";
     public $id;
     public $name;
     public $description;
@@ -76,8 +77,8 @@ class MenuTypeClass
 			$temp['price'] = $price;
 			$temp['description'] = $description;
 			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] = $menu_image;
-			$temp['backgroundImage'] = $backgroundImage;
+			$temp['menu_image'] = $this->ImageBasepath.$menu_image;
+			$temp['backgroundImage'] = $this->ImageBasepath.$backgroundImage;
 			$temp['ingredients'] = $description;
 			$temp['menu_status'] = $menu_type_id;
 			$temp['created'] = $created;

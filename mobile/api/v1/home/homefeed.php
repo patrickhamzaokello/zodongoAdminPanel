@@ -4,13 +4,13 @@
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-include_once '../config/Database.php';
-include_once '../includes/MenuTypeClass.php';
-include_once '../includes/MenuClass.php';
-include_once '../includes/CategoryFunctions.php';
+include_once '../../../../admin/config.php';
+include_once '../inludes/MenuTypeClass.php';
+include_once '../inludes/MenuClass.php';
+include_once '../inludes/CategoryFunctions.php';
 
 $database = new Database();
-$db = $database->getConnection();
+$db = $database->getConnString();
 
 
 $cat_page = (isset($_GET['page']) && $_GET['page']) ? $_GET['page'] : '1';

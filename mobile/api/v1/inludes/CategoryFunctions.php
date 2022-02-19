@@ -4,7 +4,7 @@ class CategoryFunctions
 
 	public $page;
 	private $conn;
-	private $imagePathRoot  = "http://192.168.0.118:8080/projects/zodongoAdmin/pages/";
+	private $imagePathRoot  = "https://zodongofoods.com/admin/pages/";
 
 
 
@@ -317,7 +317,7 @@ class CategoryFunctions
 			$temp['id'] = $category->getMenuTypeId();
 			$temp['name'] = $category->getMenuTypeName();
 			$temp['description'] = $category->getMenuTypeDescription();
-			$temp['imageCover'] = $category->getMenuTypeImageCover();
+			$temp['imageCover'] = $this->imagePathRoot.$category->getMenuTypeImageCover();
 			$temp['created'] = $category->getMenuTypeCreated();
 			$temp['modified'] = $category->getMenuTypeModified();
 			$temp['sectioned_menuItems'] = $category->getCategoryMenuitems();
