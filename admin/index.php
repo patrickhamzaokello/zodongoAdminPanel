@@ -1,10 +1,11 @@
 <?php
 
-require('session.php');
 
 require("config.php");
 $db = new Database();
 $con = $db->getConnString();
+
+require('session.php');
 
 require('queries/statsquery.php');
 require('queries/order_new_query.php');
