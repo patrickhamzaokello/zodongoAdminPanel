@@ -3,6 +3,7 @@ class FoodMenu
 {
 
 	private $itemsTable = "tblmenu";
+	private $ImageBasepath = "https://zodongofoods.com/admin/pages/";
 	public $menu_id;
 	public $menu_name;
 	public $price;
@@ -130,7 +131,6 @@ class FoodMenu
 	function readMenuDetail()
 	{
 
-
 		$itemRecords = array();
 
 		$this->menu_id = htmlspecialchars(strip_tags($_GET["menuId"]));
@@ -158,8 +158,8 @@ class FoodMenu
 			$price = $menu_type_data['price'];
 			$description = $menu_type_data['description'];
 			$menu_type_id = $menu_type_data['menu_type_id'];
-			$menu_image = $menu_type_data['menu_image'];
-			$backgroundImage = $menu_type_data['backgroundImage'];
+			$menu_image = $this->ImageBasepath.$menu_type_data['menu_image'];
+			$backgroundImage =  $this->ImageBasepath.$menu_type_data['backgroundImage'];
 			$ingredients = $menu_type_data['ingredients'];
 			$menu_status = $menu_type_data['menu_status'];
 			$created = $menu_type_data['created'];
@@ -192,8 +192,8 @@ class FoodMenu
 			$menudetailtemp['price'] = floatval($price);
 			$menudetailtemp['description'] = $description;
 			$menudetailtemp['menu_type_id'] = floatval($menu_type_id);
-			$menudetailtemp['menu_image'] = $menu_image;
-			$menudetailtemp['backgroundImage'] = $backgroundImage;
+			$menudetailtemp['menu_image'] =  $this->ImageBasepath.$menu_image;
+			$menudetailtemp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
 			$menudetailtemp['ingredients'] = $ingredients;
 			$menudetailtemp['menu_status'] = floatval($menu_status);
 			$menudetailtemp['created'] = $created;
@@ -215,8 +215,8 @@ class FoodMenu
 			$temp['price'] = $price;
 			$temp['description'] = $description;
 			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] = $menu_image;
-			$temp['backgroundImage'] = $backgroundImage;
+			$temp['menu_image'] =  $this->ImageBasepath.$menu_image;
+			$temp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
 			$temp['ingredients'] = $description;
 			$temp['menu_status'] = $menu_status;
 			$temp['created'] = $created;
