@@ -472,6 +472,5 @@ composer.lock
 .sass-cache/
 *.css.map
 *.sass.map
-*.scss.mapa d m i n / c o n f i g . p h p  
- m o b i l e / a p i / v 1 / c o n f i g / D a t a b a s e . p h p  
- 
+*.scss.map
+*/Database.php
