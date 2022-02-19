@@ -1,6 +1,5 @@
 <?php
-
-
+// keep the same order
 require("config.php");
 $db = new Database();
 $con = $db->getConnString();
