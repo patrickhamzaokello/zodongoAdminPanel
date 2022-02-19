@@ -28,19 +28,8 @@ class FoodMenu
 
 	
 
-	function read()
-	{
-		if ($this->menu_id) {
-			$stmt = $this->conns->prepare("SELECT * FROM " . $this->itemsTable . " WHERE menu_id = ?");
-			$stmt->bind_param("i", $this->menu_id);
-		} else {
-			$stmt = $this->conns->prepare("SELECT * FROM " . $this->itemsTable);
-		}
-		$stmt->execute();
-		$result = $stmt->get_result();
-		return $result;
-	}
 
+	//get selected category and products in it
 	function readPage()
 	{
 
@@ -67,8 +56,8 @@ class FoodMenu
 			$menu_type_data = mysqli_fetch_assoc($menu_type_result);
 
 			$menu_type_name = $menu_type_data['name'];
-			$menu_type_description = $menu_type_data['description'];
-			$menu_type_imageCover = $menu_type_data['imageCover'];
+			$menu_type_description = $this->ImageBasepath.$menu_type_data['description'];
+			$menu_type_imageCover = $this->ImageBasepath.$menu_type_data['imageCover'];
 			$menu_type_created = $menu_type_data['created'];
 
 
@@ -93,8 +82,8 @@ class FoodMenu
 
 			$menu_type_temp['menu_name'] = $menu_type_name;
 			$menu_type_temp['description'] = $menu_type_description;
-			$menu_type_temp['menu_image'] = $menu_type_imageCover;
-			$menu_type_temp['backgroundImage'] = $menu_type_imageCover;
+			$menu_type_temp['menu_image'] = $this->ImageBasepath.$menu_type_imageCover;
+			$menu_type_temp['backgroundImage'] = $this->ImageBasepath.$menu_type_imageCover;
 			$menu_type_temp['created'] = $menu_type_created;
 
 
@@ -112,8 +101,8 @@ class FoodMenu
 			$temp['price'] = $price;
 			$temp['description'] = $description;
 			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] = $menu_image;
-			$temp['backgroundImage'] = $backgroundImage;
+			$temp['menu_image'] = $this->ImageBasepath.$menu_image;
+			$temp['backgroundImage'] = $this->ImageBasepath.$backgroundImage;
 			$temp['ingredients'] = $description;
 			$temp['menu_status'] = $menu_type_id;
 			$temp['created'] = $created;
@@ -128,6 +117,7 @@ class FoodMenu
 		return $itemRecords;
 	}
 
+	//get selected menu details and similar product
 	function readMenuDetail()
 	{
 
@@ -232,6 +222,7 @@ class FoodMenu
 	}
 
 
+	// search api end point
 	function topMenuItems()
 	{
 
@@ -259,7 +250,7 @@ class FoodMenu
 
 			$menu_type_name = $menu_type_data['name'];
 			$menu_type_description = $menu_type_data['description'];
-			$menu_type_imageCover = $menu_type_data['imageCover'];
+			$menu_type_imageCover =  $this->ImageBasepath.$menu_type_data['imageCover'];
 			$menu_type_created = $menu_type_data['created'];
 
 
@@ -289,8 +280,8 @@ class FoodMenu
 			$temp['price'] = $price;
 			$temp['description'] = $description;
 			$temp['menu_type_id'] = $menu_type_id;
-			$temp['menu_image'] = $menu_image;
-			$temp['backgroundImage'] = $backgroundImage;
+			$temp['menu_image'] =  $this->ImageBasepath.$menu_image;
+			$temp['backgroundImage'] =  $this->ImageBasepath.$backgroundImage;
 			$temp['ingredients'] = $description;
 			$temp['menu_status'] = $menu_type_id;
 			$temp['created'] = $created;
@@ -305,50 +296,4 @@ class FoodMenu
 		return $itemRecords;
 	}
 
-
-
-	function update()
-	{
-
-		$stmt = $this->conns->prepare("
-		UPDATE " . $this->itemsTable . " 
-		SET menu_name= ?, price = ?,description= ?, menu_type_id = ?, menu_image = ?, ingredients = ?, menu_status = ?
-		WHERE menu_id = ?");
-
-		$this->menu_id = htmlspecialchars(strip_tags($this->menu_id));
-		$this->menu_name = htmlspecialchars(strip_tags($this->menu_name));
-		$this->price = htmlspecialchars(strip_tags($this->price));
-		$this->description = htmlspecialchars(strip_tags($this->description));
-		$this->menu_type_id = htmlspecialchars(strip_tags($this->menu_type_id));
-		$this->menu_image = htmlspecialchars(strip_tags($this->menu_image));
-		$this->ingredients = htmlspecialchars(strip_tags($this->ingredients));
-		$this->menu_status = htmlspecialchars(strip_tags($this->menu_status));
-
-
-		$stmt->bind_param("sssssssi", $this->menu_name, $this->price, $this->description, $this->menu_type_id, $this->menu_image, $this->ingredients, $this->menu_status, $this->menu_id);
-
-		if ($stmt->execute()) {
-			return true;
-		}
-
-		return false;
-	}
-
-	function delete()
-	{
-
-		$stmt = $this->conns->prepare("
-		DELETE FROM " . $this->itemsTable . " 
-		WHERE menu_id = ?");
-
-		$this->menu_id = htmlspecialchars(strip_tags($this->menu_id));
-
-		$stmt->bind_param("i", $this->menu_id);
-
-		if ($stmt->execute()) {
-			return true;
-		}
-
-		return false;
-	}
 }
