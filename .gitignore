@@ -1,3 +1,4 @@
+/admin/config.php
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db
@@ -471,4 +472,5 @@ composer.lock
 .sass-cache/
 *.css.map
 *.sass.map
-*.scss.map
+*.scss.mapa d m i n / c o n f i g . p h p  
+ 
