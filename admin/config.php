@@ -26,7 +26,7 @@ class Database
      * true -- in local developement
      * false -- in production development
      */
-    var $local = true;
+    var $local = false;
 
     function getConnString()
     {
@@ -39,10 +39,10 @@ class Database
             $this->port_name = "3306";
             $this->con;
         } else {
-            $this->hostname = "178.79.148.46";
-            $this->username = "streamerMwonyaa";
-            $this->password = "upJH4122kzPTY2";
-            $this->databasename = "mwonya";
+            $this->hostname = "localhost";
+            $this->username = "rgxszumy_zodongofoodsuser";
+            $this->password = "P-8dUMviQVb%";
+            $this->databasename = "rgxszumy_zodongofoods";
             $this->port_name = "3306";
             $this->con;
         }
