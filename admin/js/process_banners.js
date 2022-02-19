@@ -15,7 +15,7 @@ const btnloader = document.querySelector("#btnloader");
 var order_action;
 
 createnewBTN.forEach((productCard) => {
-  // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
+  // Make whole card clickable, but only if event target is NOT a specific card action inside <div Functions="product-card__actions">.
   productCard.addEventListener("click", (e) => {
     if (e.target.closest(".product-card__actions") === null) {
       if (displaySetting == "block") {
@@ -33,7 +33,7 @@ createnewBTN.forEach((productCard) => {
 approveOrderBtn.forEach((productCard) => {
   const childNamegot = productCard.querySelector(".cardID").value;
 
-  // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
+  // Make whole card clickable, but only if event target is NOT a specific card action inside <div Functions="product-card__actions">.
   productCard.addEventListener("click", (e) => {
     if (e.target.closest(".product-card__actions") === null) {
       if (displaySetting == "block") {
@@ -55,7 +55,7 @@ approveOrderBtn.forEach((productCard) => {
 cancelORderBTn.forEach((cancelbtn) => {
   const childNamegot = cancelbtn.querySelector(".cardID").value;
 
-  // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
+  // Make whole card clickable, but only if event target is NOT a specific card action inside <div Functions="product-card__actions">.
   cancelbtn.addEventListener("click", (e) => {
     if (e.target.closest(".product-card__actions") === null) {
       if (displaySetting == "block") {
@@ -146,7 +146,7 @@ $(document).ready(function () {
         if (!data.success) {
           console.log("failure" + data);
           $(".sponsormessagediv").html(
-            '<div class="alert alert-error">' + data.message + "</div>"
+            '<div Functions="alert alert-error">' + data.message + "</div>"
           );
           setTimeout(function () {
             $(".sponsormessagediv").html("");
@@ -155,7 +155,7 @@ $(document).ready(function () {
         } else {
           console.log("success" + data);
           $(".sponsormessagediv").html(
-            '<div class="alert alert-success">' + data.message + "</div>"
+            '<div Functions="alert alert-success">' + data.message + "</div>"
           );
           setTimeout(function () {
             $(".sponsormessagediv").html("");

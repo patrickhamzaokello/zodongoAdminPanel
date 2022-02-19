@@ -121,7 +121,7 @@ DVEfiles/
 ucli.key
 
 # When the design is elaborated for DirectC, the following file is created
-# with declarations for C/C++ functions.
+# with declarations for C/C++ Functions.
 vc_hdrs.h
 
 ##### SVN

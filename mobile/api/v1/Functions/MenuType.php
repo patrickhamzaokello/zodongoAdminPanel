@@ -29,19 +29,19 @@ class MenuType
 			$stmt = $this->conn->prepare("SELECT id,name,description,imageCover,created, modified FROM " . $this->itemsTable . " WHERE id = ?");
 			$stmt->bind_param("i", $this->id);
 			$stmt->execute();
-			$stmt->bind_result($id, $name, $description, $imageCover, $created, $modified);
+			$stmt->bind_result($this->id, $this->name, $this->description, $this->imageCover, $this->created, $this->modified);
 
 
 			while ($stmt->fetch()) {
 
 				$temp = array();
 
-				$temp['id'] = $id;
-				$temp['name'] = $name;
-				$temp['description'] = $description;
-				$temp['imageCover'] = $imageCover;
-				$temp['created'] = $created;
-				$temp['modified'] = $modified;
+				$temp['id'] = $this->id;
+				$temp['name'] = $this->name;
+				$temp['description'] = $this->description;
+				$temp['imageCover'] = $this->imageCover;
+				$temp['created'] = $this->created;
+				$temp['modified'] = $this->modified;
 
 				array_push($itemRecords, $temp);
 			}

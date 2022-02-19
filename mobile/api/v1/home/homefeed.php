@@ -5,9 +5,9 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../../../../admin/config.php';
-include_once '../inludes/MenuTypeClass.php';
-include_once '../inludes/MenuClass.php';
-include_once '../inludes/CategoryFunctions.php';
+include_once '../Classes/MenuTypeClass.php';
+include_once '../Classes/MenuClass.php';
+include_once '../Functions/CategoryFunctions.php';
 
 $database = new Database();
 $db = $database->getConnString();

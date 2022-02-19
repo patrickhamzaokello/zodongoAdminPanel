@@ -18,7 +18,7 @@ approveOrderBtn.forEach((productCard) => {
   const childNamegot = productCard.querySelector(".order_id_input").value;
   const order_status_id_got = productCard.querySelector(".order_status_id").value;
 
-  // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
+  // Make whole card clickable, but only if event target is NOT a specific card action inside <div Functions="product-card__actions">.
   productCard.addEventListener("click", (e) => {
     if (e.target.closest(".product-card__actions") === null) {
 
@@ -42,7 +42,7 @@ cancelORderBTn.forEach((cancelbtn) => {
   const childNamegot = cancelbtn.querySelector(".order_id_input").value;
   const order_status_id_got = cancelbtn.querySelector(".order_status_id").value;
 
-  // Make whole card clickable, but only if event target is NOT a specific card action inside <div class="product-card__actions">.
+  // Make whole card clickable, but only if event target is NOT a specific card action inside <div Functions="product-card__actions">.
   cancelbtn.addEventListener("click", (e) => {
     if (e.target.closest(".product-card__actions") === null) {
 
@@ -84,7 +84,7 @@ $(document).ready(function () {
     }).done(function (data) {
       if (!data.success) {
         $(".sponsormessagediv").html(
-          '<div class="alert alert-error">' + data.message + "</div>"
+          '<div Functions="alert alert-error">' + data.message + "</div>"
         );
         setTimeout(function () {
           $(".sponsormessagediv").html("");
@@ -93,7 +93,7 @@ $(document).ready(function () {
 
       } else {
         $(".sponsormessagediv").html(
-          '<div class="alert alert-success">' + data.message + "</div>"
+          '<div Functions="alert alert-success">' + data.message + "</div>"
         );
         setTimeout(function () {
           $(".sponsormessagediv").html("");
