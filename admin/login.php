@@ -6,7 +6,7 @@ include("config.php");
 <html lang="en">
 
 <head>
-    <title>Mwonyaa Admin</title>
+    <title>Zodongo Foods Admin</title>
     <meta charset="utf-8">
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
