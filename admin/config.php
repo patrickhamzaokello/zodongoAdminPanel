@@ -40,9 +40,9 @@ class Database
             $this->con;
         } else {
             $this->hostname = "localhost";
-            $this->username = "rgxszumy_zodongofoodsuser";
-            $this->password = "P-8dUMviQVb%";
-            $this->databasename = "rgxszumy_zodongofoods";
+            $this->username = "rgxszumy_zodongofoodsadmin";
+            $this->password = "9OiI]8gLzG0g";
+            $this->databasename = "rgxszumy_zodongo_com_foods";
             $this->port_name = "3306";
             $this->con;
         }
