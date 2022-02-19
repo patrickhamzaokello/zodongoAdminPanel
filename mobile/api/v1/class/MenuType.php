@@ -3,6 +3,7 @@ class MenuType
 {
 
 	private $itemsTable = "tblmenutype";
+	private $ImageBasepath = "https://zodongofoods.com/admin/pages/";
 	public $id;
 	public $name;
 	public $description;
@@ -16,29 +17,6 @@ class MenuType
 	public function __construct($con)
 	{
 		$this->conn = $con;
-	}
-
-	function create()
-	{
-
-		$stmt = $this->conn->prepare("
-		INSERT INTO " . $this->itemsTable . "(`name`, `description`, `imageCover`, `created`)
-		VALUES(?,?,?,?)");
-
-		$this->name = htmlspecialchars(strip_tags($this->name));
-		$this->description = htmlspecialchars(strip_tags($this->description));
-		$this->imageCover = htmlspecialchars(strip_tags($this->imageCover));
-		$this->created = htmlspecialchars(strip_tags($this->created));
-
-
-
-		$stmt->bind_param("ssss", $this->name, $this->description, $this->imageCover, $this->created);
-
-		if ($stmt->execute()) {
-			return true;
-		}
-
-		return false;
 	}
 
 	function read()
@@ -86,7 +64,7 @@ class MenuType
 				$temp['id'] = $menu->getMenuTypeId();
 				$temp['name'] = $menu->getMenuTypeName();
 				$temp['description'] = $menu->getMenuTypeDescription();
-				$temp['imageCover'] = $menu->getMenuTypeImageCover();
+				$temp['imageCover'] = $this->ImageBasepath.$menu->getMenuTypeImageCover();
 				$temp['created'] = $menu->getMenuTypeCreated();
 				$temp['modified'] = $menu->getMenuTypeModified();
 

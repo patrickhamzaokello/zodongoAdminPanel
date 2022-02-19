@@ -52,11 +52,11 @@ class MenuTypeClass
     }
 
     function getMenuTypeCreated() {
-        return $this->imageCover;
+        return $this->created;
     }
 
     function getMenuTypeModified() {
-        return $this->imageCover;
+        return $this->modified;
     }
 
     function getCategoryMenuitems(){
