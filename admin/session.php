@@ -2,6 +2,7 @@
 
 if (!isset($_SESSION['login_user'])) {
     header("Location: login");
+    die();
 } else {
     $user_check = $_SESSION['login_user'];
 
