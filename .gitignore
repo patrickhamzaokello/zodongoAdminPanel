@@ -1,4 +1,6 @@
 /admin/config.php
+/mobile/api/v1/config/Database.php
+
 ##### Windows
 # Windows thumbnail cache files
 Thumbs.db
@@ -473,4 +475,3 @@ composer.lock
 *.css.map
 *.sass.map
 *.scss.map
-*/Database.php
