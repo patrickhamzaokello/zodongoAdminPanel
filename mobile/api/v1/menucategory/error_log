@@ -1,0 +1,2 @@
+[15-Jan-2022 21:34:37 America/Boise] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/rgxszumy/public_html/pkapp/ZodongoFoods/config/Database.php on line 10
+[15-Jan-2022 21:41:30 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home1/rgxszumy/public_html/pkapp/ZodongoFoods/class/MenuType.php on line 133
