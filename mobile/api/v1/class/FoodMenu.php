@@ -25,45 +25,7 @@ class FoodMenu
 		$this->conns = $con;
 	}
 
-	function create()
-	{
-
-		// $stmt = $this->conns->prepare(" INSERT INTO " . $this->itemsTable . "(menu_name, price, description, menu_type_id, menu_image,backgroundImage,ingredients, menu_status, created, modified,rating) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-
-		// $this->menu_name = htmlspecialchars(strip_tags($this->menu_name));
-		// $this->price = htmlspecialchars(strip_tags($this->price));
-		// $this->description = htmlspecialchars(strip_tags($this->description));
-		// $this->menu_type_id = htmlspecialchars(strip_tags($this->menu_type_id));
-		// $this->menu_image = htmlspecialchars(strip_tags($this->menu_image));
-		// $this->ingredients = htmlspecialchars(strip_tags($this->ingredients));
-		// $this->menu_status = htmlspecialchars(strip_tags($this->menu_status));
-		// $this->created = htmlspecialchars(strip_tags($this->created));
-
-
-		// $stmt->bind_param("sisisssissi", $this->menu_name, $this->price, $this->description, $this->menu_type_id, $this->menu_image,$this->menu_image, $this->ingredients, $this->menu_status, $this->created, $this->created,2);
-
-		// // if ($stmt->execute()) {
-		// // 	return true;
-		// // }
-		//creating a statement to insert to database 
-		$stmt = $conn->prepare("INSERT INTO names (name) VALUES (?)");
-
-		//binding the parameter to statement 
-		$stmt->bind_param("s", $name);
-
-		//if data inserts successfully
-		if ($stmt->execute()) {
-			//making success response 
-			$response['error'] = false;
-			$response['message'] = 'Name saved successfully';
-		} else {
-			//if not making failure response 
-			$response['error'] = true;
-			$response['message'] = 'Please try later';
-		}
-
-		return false;
-	}
+	
 
 	function read()
 	{
