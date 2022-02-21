@@ -226,7 +226,7 @@ class CategoryFunctions
 		$no_of_records_per_page = 10;
 		$offset = ($this->pageno - 1) * $no_of_records_per_page;
 
-		$sql = "SELECT COUNT(DISTINCT(menu_type_id)) as count FROM tblmenu  limit 1";
+		$sql = "SELECT COUNT(DISTINCT(menu_type_id)) as count FROM tblmenu where menu_status = 2  limit 1";
 		$result = mysqli_query($this->conn, $sql);
 		$data = mysqli_fetch_assoc($result);
 		$total_rows = floatval($data['count']);
@@ -303,7 +303,7 @@ class CategoryFunctions
 
 		//fetch other categories Begin
 
-		$category_stmt = "SELECT DISTINCT(menu_type_id) FROM tblmenu  WHERE menu_status = 1 ORDER BY `tblmenu`.`menu_name` ASC LIMIT " . $offset . "," . $no_of_records_per_page . "";
+		$category_stmt = "SELECT DISTINCT(menu_type_id) FROM tblmenu  WHERE menu_status = 2 ORDER BY `tblmenu`.`menu_name` ASC LIMIT " . $offset . "," . $no_of_records_per_page . " ";
 		$menu_type_id_result = mysqli_query($this->conn, $category_stmt);
 
 		while ($row = mysqli_fetch_array($menu_type_id_result)) {
