@@ -75,7 +75,7 @@ require("../queries/classes/MenuType.php");
           <p>Banners</p>
         </a>
       </div>
-    
+
     </div>
     </div>
     <div class="mainpanel">
@@ -163,7 +163,6 @@ require("../queries/classes/MenuType.php");
 
               <div id="error"></div>
 
-
               <div class="form-group">
                 <input type="text" id="name" name="name" class="form-control" placeholder="Banner Name">
               </div>
@@ -178,6 +177,10 @@ require("../queries/classes/MenuType.php");
                       <?php
                       $menu_type = new MenuType($con, $row);
                       ?>
+
+                      <option value="0">
+                        Choose Banner Category
+                      </option>
 
                       <option value="  <?= $menu_type->getId()  ?>">
                         <?= $menu_type->getName()  ?>
@@ -223,6 +226,16 @@ require("../queries/classes/MenuType.php");
 
           </form>
 
+        </div>
+      </div>
+
+      <!--        loader-->
+      <div class="loaderdiv">
+        <div class="loader-container">
+          <div class="dot dot-1"></div>
+          <div class="dot dot-2"></div>
+          <div class="dot dot-3"></div>
+          <div class="dot dot-4"></div>
         </div>
       </div>
     </div>
