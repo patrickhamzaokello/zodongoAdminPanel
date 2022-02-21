@@ -272,18 +272,17 @@ class CategoryFunctions
 
 			//get featured categories
             $featuredCategory = array();
+            $featuredCategoryIds = array();
 
-
-            $categoryItems_sql = "SELECT DISTINCT(menu_type_id) FROM tblmenu WHERE menu_status = 2 ORDER BY `tblmenu`.`created` DESC" .
-                "";
+            $categoryItems_sql = "SELECT DISTINCT(menu_type_id) FROM tblmenu  WHERE menu_status = 2 ORDER BY `tblmenu`.`menu_name` ASC ";
             $menu_type_id_result = mysqli_query($this->conn, $categoryItems_sql);
 
             while ($row = mysqli_fetch_array($menu_type_id_result)) {
 
-                array_push($categoryIds, $row);
+                array_push($featuredCategoryIds, $row);
             }
 
-            foreach ($categoryIds as $row) {
+            foreach ($featuredCategoryIds as $row) {
                 $category = new MenuTypeClass($this->conn, intval($row['menu_type_id']));
                 $temp = array();
                 $temp['id'] = intval($category->getMenuTypeId());
