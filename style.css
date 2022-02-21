@@ -280,9 +280,18 @@ header .container {
   }
 }
 
+.companylogo{
+  width: 300px;
+  margin: 2em 0;
+}
+
 @media screen and (max-width: 870px) {
   .hamburger-menu {
     display: flex;
+  }
+
+  .companylogo {
+    width: 200px;
   }
 
   .links {
