@@ -9,6 +9,7 @@
   --lightOne: #ccc;
   --lightTwo: #e7e3e3;
   --btnColor: #000000;
+  --headerlogo:url("./img/zodongo.png");
 }
 
 .dark {
@@ -20,7 +21,7 @@
   --lightOne: #5d5d5d;
   --lightTwo: #696969;
   --btnColor: #ffffff;
-
+  --headerlogo:url("./img/zodongoblack.png");
 }
 
 *,
@@ -91,10 +92,18 @@ header .container {
 }
 
 .logo img {
-  width: 160px;
   margin-right: 0.6rem;
   margin-top: -0.6rem;
+  background-image: var(--headerlogo);
+  width: 150px;
+  height: 0px !important;
+  height /**/: 36.8px;
+  padding: 38px 0 0 0;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+
+
 
 .logo h3 {
   color: var(--darkTwo);
