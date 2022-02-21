@@ -142,9 +142,9 @@ class Menu
         $status = "";
         if($this->menu_status == 2)
         {
-            $status = "Available";
+            $status = "Online";
         } else {
-            $status = "Un Available";
+            $status = "Offline";
         }
         return $status;
     }
