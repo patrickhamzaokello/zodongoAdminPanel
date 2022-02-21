@@ -907,4 +907,237 @@ main .buttonload .fa {
   margin-right: 8px;
   display: none;
 }
+
+main .loaderdiv {
+  position: fixed;
+  background: #00000099;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  width: 85%;
+  height: 100%;
+  top: 0;
+  display: none;
+  margin: 0 -1em !important;
+}
+
+main .loader-container {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+main .dot-1 {
+  background-color: #3db5e9;
+  z-index: 4;
+  -webkit-animation: moveDot1 2s infinite ease;
+          animation: moveDot1 2s infinite ease;
+}
+
+main .dot-2 {
+  background-color: #1de1c0;
+  z-index: 3;
+  -webkit-animation: moveDot2 2s infinite ease;
+          animation: moveDot2 2s infinite ease;
+}
+
+main .dot-3 {
+  background-color: #005cff;
+  z-index: 2;
+  -webkit-animation: moveDot3 2s infinite ease;
+          animation: moveDot3 2s infinite ease;
+}
+
+main .dot-4 {
+  background-color: #03007f;
+  z-index: 1;
+  -webkit-animation: moveDot4 2s infinite ease;
+          animation: moveDot4 2s infinite ease;
+}
+
+@-webkit-keyframes moveDot1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: top left */
+    -webkit-transform-origin: -20px -20px;
+            transform-origin: -20px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: top left */
+    -webkit-transform-origin: -20px -20px;
+            transform-origin: -20px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@keyframes moveDot1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: top left */
+    -webkit-transform-origin: -20px -20px;
+            transform-origin: -20px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: top left */
+    -webkit-transform-origin: -20px -20px;
+            transform-origin: -20px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@-webkit-keyframes moveDot2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: top right */
+    -webkit-transform-origin: 40px -20px;
+            transform-origin: 40px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: top right */
+    -webkit-transform-origin: 40px -20px;
+            transform-origin: 40px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@keyframes moveDot2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: top right */
+    -webkit-transform-origin: 40px -20px;
+            transform-origin: 40px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: top right */
+    -webkit-transform-origin: 40px -20px;
+            transform-origin: 40px -20px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@-webkit-keyframes moveDot3 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: bottom left */
+    -webkit-transform-origin: -20px 40px;
+            transform-origin: -20px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: bottom left */
+    -webkit-transform-origin: -20px 40px;
+            transform-origin: -20px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@keyframes moveDot3 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: bottom left */
+    -webkit-transform-origin: -20px 40px;
+            transform-origin: -20px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: bottom left */
+    -webkit-transform-origin: -20px 40px;
+            transform-origin: -20px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@-webkit-keyframes moveDot4 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: bottom right */
+    -webkit-transform-origin: 40px 40px;
+            transform-origin: 40px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: bottom right */
+    -webkit-transform-origin: 40px 40px;
+            transform-origin: 40px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
+
+@keyframes moveDot4 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    /* transform-origin: bottom right */
+    -webkit-transform-origin: 40px 40px;
+            transform-origin: 40px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+    /* transform-origin: bottom right */
+    -webkit-transform-origin: 40px 40px;
+            transform-origin: 40px 40px;
+    -webkit-transform-style: preserve-3D;
+            transform-style: preserve-3D;
+  }
+}
 /*# sourceMappingURL=main.css.map */

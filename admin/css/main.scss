@@ -662,6 +662,8 @@ main {
     margin: 0 -1em !important;
   }
 
+  
+
   .sponsorchildnowbtn {
     background: #000;
     border: none;
@@ -812,6 +814,124 @@ main {
       margin-left: -12px;
       margin-right: 8px;
       display: none;
+    }
+  }
+
+  .loaderdiv {
+    position: fixed;
+    background: #00000099;
+    display: grid;
+    place-content: center;
+    width: 85%;
+    height: 100%;
+    top: 0;
+    display: none;
+    margin: 0 -1em !important;
+  }
+
+  .loader-container {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .dot-1 {
+    background-color: #3db5e9;
+    z-index: 4;
+    animation: moveDot1 2s infinite ease;
+  }
+  
+  .dot-2 {
+    background-color: #1de1c0;
+    z-index: 3;
+    animation: moveDot2 2s infinite ease;
+  }
+  
+  .dot-3 {
+    background-color: #005cff;
+    z-index: 2;
+    animation: moveDot3 2s infinite ease;
+  }
+  
+  .dot-4 {
+    background-color: #03007f;
+    z-index: 1;
+    animation: moveDot4 2s infinite ease;
+  }
+  
+  @keyframes moveDot1 {
+    from {
+      transform: rotate(0deg);
+      /* transform-origin: top left */
+      transform-origin: -20px -20px;
+      transform-style: preserve-3D;
+    }
+  
+    to {
+      transform: rotate(-360deg);
+      /* transform-origin: top left */
+      transform-origin: -20px -20px;
+      transform-style: preserve-3D;
+    }
+  }
+  
+  @keyframes moveDot2 {
+    from {
+      transform: rotate(0deg);
+      /* transform-origin: top right */
+      transform-origin: 40px -20px;
+      transform-style: preserve-3D;
+    }
+  
+    to {
+      transform: rotate(-360deg);
+      /* transform-origin: top right */
+      transform-origin: 40px -20px;
+      transform-style: preserve-3D;
+    }
+  }
+  
+  @keyframes moveDot3 {
+    from {
+      transform: rotate(0deg);
+      /* transform-origin: bottom left */
+      transform-origin: -20px 40px;
+      transform-style: preserve-3D;
+    }
+  
+    to {
+      transform: rotate(-360deg);
+      /* transform-origin: bottom left */
+      transform-origin: -20px 40px;
+      transform-style: preserve-3D;
+    }
+  }
+  
+  @keyframes moveDot4 {
+    from {
+      transform: rotate(0deg);
+      /* transform-origin: bottom right */
+      transform-origin: 40px 40px;
+      transform-style: preserve-3D;
+    }
+  
+    to {
+      transform: rotate(-360deg);
+      /* transform-origin: bottom right */
+      transform-origin: 40px 40px;
+      transform-style: preserve-3D;
     }
   }
 }

@@ -51,7 +51,7 @@ require("../queries/classes/MenuType.php");
   <main>
     <div class="sidepanel">
       <div class="about">
-      <div class="title">
+        <div class="title">
           <img src="assets/zodongologo.png" alt="">
         </div>
       </div>
@@ -159,7 +159,7 @@ require("../queries/classes/MenuType.php");
               <div class="form-group">
                 <input type="text" id="name" name="name" class="form-control" placeholder="Category Name">
               </div>
-              
+
               <div class="form-group">
                 <input type="text" id="number" name="display_order" class="form-control" placeholder="Category Description">
               </div>
@@ -192,6 +192,17 @@ require("../queries/classes/MenuType.php");
           </form>
 
         </div>
+      </div>
+
+      <!--        loader-->
+      <div class="loaderdiv">
+        <div class="loader-container">
+          <div class="dot dot-1"></div>
+          <div class="dot dot-2"></div>
+          <div class="dot dot-3"></div>
+          <div class="dot dot-4"></div>
+        </div>
+
       </div>
 
     </div>
