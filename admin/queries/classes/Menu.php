@@ -142,7 +142,9 @@ class Menu
         $status = "";
         if($this->menu_status == 2)
         {
-            $status = "visible";
+            $status = "Available";
+        } else {
+            $status = "Un Available";
         }
         return $status;
     }
