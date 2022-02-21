@@ -234,7 +234,7 @@ class CategoryFunctions
 
 
 
-		$categoryids = array();
+		$categoryIds = array();
 		$menuCategory = array();
 		$itemRecords = array();
 
@@ -271,24 +271,28 @@ class CategoryFunctions
 
 
 			//get featured categories
+            $featuredCategory = array();
 
-			$featuredCategory = array();
 
+            $categoryItems_sql = "SELECT DISTINCT(menu_type_id) FROM tblmenu  WHERE menu_status = 2 ORDER BY `tblmenu`.`menu_name` ASC LIMIT " . $offset . "," . $no_of_records_per_page . " ";
+            $menu_type_id_result = mysqli_query($this->conn, $categoryItems_sql);
 
-			$categoryitems_sql = mysqli_query($this->conn, "SELECT * FROM tblmenutype  ORDER BY `tblmenutype`.`created` DESC ");
+            while ($row = mysqli_fetch_array($menu_type_id_result)) {
 
-			while ($row = mysqli_fetch_array($categoryitems_sql)) {
-				$temp = array();
-				$filename = $this->imagePathRoot . $row['imageCover'];;
-				$temp['id'] = intval($row['id']);
-				$temp['name'] = $row['name'];
-				$temp['description'] = $row['description'];
-				$temp['imageCover'] = $filename;
-				$temp['created'] = $row['created'];
-				$temp['modified'] = $row['modified'];
+                array_push($categoryIds, $row);
+            }
 
-				array_push($featuredCategory, $temp);
-			}
+            foreach ($categoryIds as $row) {
+                $category = new MenuTypeClass($this->conn, intval($row['menu_type_id']));
+                $temp = array();
+                $temp['id'] = intval($category->getMenuTypeId());
+                $temp['name'] = $category->getMenuTypeName();
+                $temp['description'] = $category->getMenuTypeDescription();
+                $temp['imageCover'] = $this->imagePathRoot.$category->getMenuTypeImageCover();
+                $temp['created'] = $category->getMenuTypeCreated();
+                $temp['modified'] = $category->getMenuTypeModified();
+                array_push($featuredCategory, $temp);
+            }
 
 
 			$feat_Cat_temps = array();
@@ -308,10 +312,10 @@ class CategoryFunctions
 
 		while ($row = mysqli_fetch_array($menu_type_id_result)) {
 
-			array_push($categoryids, $row);
+			array_push($categoryIds, $row);
 		}
 
-		foreach ($categoryids as $row) {
+		foreach ($categoryIds as $row) {
 			$category = new MenuTypeClass($this->conn, intval($row['menu_type_id']));
 			$temp = array();
 			$temp['id'] = $category->getMenuTypeId();
