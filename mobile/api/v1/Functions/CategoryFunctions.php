@@ -326,7 +326,7 @@ class CategoryFunctions
 
 
 		$itemRecords["page"] = $this->pageno;
-        $itemRecords["app_version"] = 2;
+        $itemRecords["app_version"] = 3;
 		$itemRecords["categories"] = $menuCategory;
 		$itemRecords["total_pages"] = $total_pages;
 		$itemRecords["total_results"] = $total_rows;
