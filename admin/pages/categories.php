@@ -202,7 +202,6 @@ require("../queries/classes/MenuType.php");
           <div class="dot dot-3"></div>
           <div class="dot dot-4"></div>
         </div>
-
       </div>
 
     </div>
