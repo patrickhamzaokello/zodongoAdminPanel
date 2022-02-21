@@ -274,7 +274,8 @@ class CategoryFunctions
             $featuredCategory = array();
 
 
-            $categoryItems_sql = "SELECT DISTINCT(menu_type_id) FROM tblmenu  WHERE menu_status = 2 ORDER BY `tblmenu`.`menu_name` ASC LIMIT " . $offset . "," . $no_of_records_per_page . " ";
+            $categoryItems_sql = "SELECT DISTINCT(menu_type_id) FROM tblmenu WHERE menu_status = 2 ORDER BY `tblmenu`.`created` DESC" .
+                "";
             $menu_type_id_result = mysqli_query($this->conn, $categoryItems_sql);
 
             while ($row = mysqli_fetch_array($menu_type_id_result)) {
