@@ -1,23 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .light {
-  --mainColor: #09912b;
-  --hoverColor: #09912b;
+  --mainColor: #ffffff;
+  --hoverColor: #a9a9a9;
   --backgroundColor: #000000;
   --darkOne: #f3f3f3;
   --darkTwo: #fff;
   --lightOne: #ccc;
   --lightTwo: #e7e3e3;
+  --btnColor: #000000;
 }
 
 .dark {
-  --mainColor: #09912b;
-  --hoverColor: #00c230;
-  --backgroundColor: #015012;
-  --darkOne: #f3f3f3;
-  --darkTwo: #fff;
-  --lightOne: #ccc;
-  --lightTwo: #e7e3e3;
+  --mainColor: #1a1a1a;
+  --hoverColor: #383838;
+  --backgroundColor: #ffffff;
+  --darkOne: #2a2a2a;
+  --darkTwo: #3a3a3a;
+  --lightOne: #5d5d5d;
+  --lightTwo: #696969;
+  --btnColor: #ffffff;
+
 }
 
 *,
@@ -121,7 +124,7 @@ header .container {
 .btn {
   display: inline-block;
   padding: 0.9rem 1.9rem;
-  color: #fff !important;
+  color: var(--btnColor) !important;
   background-color: var(--mainColor);
   border-radius: 16px;
   text-transform: capitalize;
@@ -204,7 +207,7 @@ header .container {
   font-size: 1.1rem;
   margin: 1.9rem 0 2.5rem;
   max-width: 600px;
-  line-height: 2.3;
+  line-height: 1.3;
 }
 
 .showcase-area .btn {
