@@ -87,15 +87,15 @@ if (isset($_POST['order_action'])) {
           $query = mysqli_query($con,"UPDATE `tblmenutype` SET `name`='$name', `description`='$banner_number',`imageCover`='$db_targetPath', `modified`='$date' WHERE  `id` = $banner_id ");
 
           $data['success'] = true;
-          $data['message'] = 'Banner Updated!';
+          $data['message'] = 'Category Updated!';
         } else {
           $data['success'] = false;
-          $data['message'] = 'Banner not Updated';
+          $data['message'] = 'Category not Updated';
         }
       }
     } else {
       $data['success'] = false;
-      $data['message'] = 'Banner not Updated';
+      $data['message'] = 'Category not Updated';
     }
   } elseif ($order_action == 3) {
 
@@ -123,15 +123,15 @@ if (isset($_POST['order_action'])) {
 
         if ($affected_rows >= 1) {
           $data['success'] = true;
-          $data['message'] = $affected_rows . ' Banner Deleted! ';
+          $data['message'] = $affected_rows . ' Category Deleted! ';
         } else if ($affected_rows <= 0) {
           $data['success'] = false;
-          $data['message'] = 'Banner with ID ' . $childname . ' Not Deleted';
+          $data['message'] = 'Category with ID ' . $childname . ' Not Deleted';
         }
       }
     } else {
       $data['success'] = false;
-      $data['message'] = 'Banner ID not Passed';
+      $data['message'] = 'Category ID not Passed';
     }
   }
 } else {

@@ -205,7 +205,7 @@ require("../queries/classes/MenuType.php");
                 <input type="text" id="ingredients" name="display_order" class="form-control" placeholder="Ingredients">
               </div>
               <div class="form-group">
-                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*"  placeholder="Choose Image" />
+                <input id="file-input-createplaylist" name="file-input-name" class="form-control" type='file' accept="image/*" placeholder="Choose Image" />
               </div>
 
               <div class="form-group">
@@ -234,6 +234,18 @@ require("../queries/classes/MenuType.php");
 
         </div>
       </div>
+
+      <!--        loader-->
+      <div class="loaderdiv">
+        <div class="loader-container">
+          <div class="dot dot-1"></div>
+          <div class="dot dot-2"></div>
+          <div class="dot dot-3"></div>
+          <div class="dot dot-4"></div>
+        </div>
+      </div>
+
+
 
     </div>
   </main>
