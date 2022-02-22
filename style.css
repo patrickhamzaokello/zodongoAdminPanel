@@ -10,6 +10,7 @@
   --lightTwo: #e7e3e3;
   --btnColor: #000000;
   --headerlogo:url("./img/zodongo.png");
+  --footerbg: rgb(0, 0, 0);
 }
 
 .dark {
@@ -22,6 +23,8 @@
   --lightTwo: #696969;
   --btnColor: #ffffff;
   --headerlogo:url("./img/zodongoblack.png");
+  --footerbg: rgb(0, 0, 0);
+
 }
 
 *,
@@ -51,7 +54,7 @@ a {
 
 .big-wrapper {
   position: relative;
-  padding: 1.7rem 0 2rem;
+  padding-top: 1.7rem;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
@@ -73,6 +76,38 @@ a {
 header {
   position: relative;
   z-index: 70;
+}
+
+.footer{
+  background: var(--footerbg);
+  margin-top: 2em;
+}
+
+.contactcards{
+  padding: 2em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 1rem;
+}
+
+.footercard .title {
+  font-weight: bold;
+  color: var(--lightTwo);
+  font-size: 20px;
+}
+
+.footercard .lable{
+  color: var(--lightTwo);
+}
+
+.socialinks {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.socialinks a {
+  margin-right: 1em;
 }
 
 header .container {
