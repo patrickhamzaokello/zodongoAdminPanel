@@ -1,4 +1,15 @@
+<?php
+require("../config.php");
+$db = new Database();
+$con = $db->getConnString();
 
+require('../session.php');
+require('../queries/statsquery.php');
+require('../queries/order_delivered_query.php');
+require("../queries/classes/Order.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,18 +24,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <title>Delivered Orders</title>
 </head>
-<?php
-require("../config.php");
-$db = new Database();
-$con = $db->getConnString();
 
-require('../session.php');
-require('../queries/statsquery.php');
-require('../queries/order_delivered_query.php');
-require("../queries/classes/Order.php");
-
-
-?>
 <body>
   <header>
     <nav>

@@ -1,25 +1,7 @@
+
 <?php
 include("config.php");
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Zodongo Foods Admin</title>
-    <meta charset="utf-8">
-
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="loginassets/stylesheet/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="loginassets/javascript/main.js"></script>
-
-</head>
-
-<?php
 $db = new Database();
 $con = $db->getConnString();
 
@@ -58,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($error != null) {
 
-?>
+        ?>
 
         <div id="erroshow" class="erroshow">
             <div class="errorinnerdiv">
@@ -69,12 +51,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<?php
+        <?php
 
     }
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zodongo Foods Admin</title>
+    <meta charset="utf-8">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="loginassets/stylesheet/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="loginassets/javascript/main.js"></script>
+
+</head>
+
 
 <body>
 
